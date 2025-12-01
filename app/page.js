@@ -12,23 +12,27 @@ export default function Home() {
         </ul>
       </nav>
 
-      {/* SECTIONS */}
+      {/* HIGHLIGHTS */}
       <section className="h-screen flex items-center justify-center">
         <h2 className="text-5xl font-bold">HIGHLIGHTS</h2>
       </section>
 
+      {/* ARRIVAL */}
       <section className="h-screen flex items-center justify-center bg-neutral-900">
         <h2 className="text-5xl font-bold">ARRIVAL</h2>
       </section>
 
+      {/* STAY */}
       <section className="h-screen flex items-center justify-center bg-neutral-800">
         <h2 className="text-5xl font-bold">STAY</h2>
       </section>
 
+      {/* LAYERS */}
       <section className="h-screen flex items-center justify-center bg-neutral-900">
         <h2 className="text-5xl font-bold">LAYERS</h2>
       </section>
 
+      {/* MOMENTS */}
       <section className="h-screen flex items-center justify-center bg-neutral-800">
         <h2 className="text-5xl font-bold">MOMENTS</h2>
       </section>

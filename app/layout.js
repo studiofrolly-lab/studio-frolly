@@ -5,11 +5,11 @@ export const metadata = {
   description: "Portfolio by Hyejin Kang",
 };
 
-export default function RootLayout(props) {
+export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body className="bg-black text-white antialiased">
-        {props.children}
+        {children}
       </body>
     </html>
   );
