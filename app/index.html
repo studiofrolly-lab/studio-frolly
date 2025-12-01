@@ -2,227 +2,108 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>Studio Frolly | Interior & Hotel Photography</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
+  <title>Studio Frolly – Interior & Lifestyle Photography</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header / Navigation -->
-  <header class="header">
-    <div class="container header-inner">
-      <div class="logo">
-        <a href="#home">STUDIO FROLLY</a>
-      </div>
-      <nav class="nav">
-        <a href="#home">Home</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+  <header>
+    <div class="nav-inner">
+      <div class="logo">STUDIO FROLLY</div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Studio Frolly</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <main id="home" class="hero">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <p class="hero-tagline">Interior & Hotel Photography</p>
-        <h1 class="hero-title">
-          Meaningful Space, <br />
-          Performance-driven Images.
-        </h1>
-        <p class="hero-subtitle">
-          2 0 2 0 – 2 0 2 5 <br />
-          공간의 매출과 기억을 동시에 기록합니다.
-        </p>
+  <main>
 
-        <div class="hero-categories">
-          <button class="category-btn active">Highlights</button>
-          <button class="category-btn">Arrival</button>
-          <button class="category-btn">Stay</button>
-          <button class="category-btn">Layers</button>
-          <button class="category-btn">Moments</button>
-        </div>
+    <!-- Hero + 섹션 서브내비 -->
+    <section class="hero" id="top">
+      <div class="hero-title">Studio Frolly</div>
+      <div class="hero-sub">
+        Warm interior & lifestyle photography for small hotels and cozy spaces.
       </div>
+      <div class="subnav">
+        <a href="#highlights">Highlights</a>
+        <a href="#arrival">Arrival</a>
+        <a href="#stay">Stay</a>
+        <a href="#layers">Layers</a>
+        <a href="#moments">Moments</a>
+      </div>
+    </section>
 
-      <div class="hero-image">
-        <!-- 대표 이미지 하나 크게 -->
-        <img src="images/hero-main.jpg" alt="Studio Frolly Portfolio Highlight" />
+    <!-- 1. Highlights -->
+    <section id="highlights">
+      <div class="section-header">
+        <div class="section-title">Highlights</div>
+        <div class="section-sub">Selected cuts that show the mood of Studio Frolly</div>
       </div>
-    </div>
+      <div class="grid">
+        <div class="grid-item"><img src="images/highlights/01.jpg" alt="" /></div>
+        <div class="grid-item"><img src="images/highlights/02.jpg" alt="" /></div>
+        <div class="grid-item"><img src="images/highlights/03.jpg" alt="" /></div>
+        <!-- 필요하면 복붙해서 계속 추가 -->
+      </div>
+    </section>
+
+    <!-- 2. Arrival -->
+    <section id="arrival">
+      <div class="section-header">
+        <div class="section-title">Arrival</div>
+        <div class="section-sub">Entrances, lobbies and first impressions</div>
+      </div>
+      <div class="grid">
+        <div class="grid-item"><img src="images/arrival/01.jpg" alt="" /></div>
+        <div class="grid-item"><img src="images/arrival/02.jpg" alt="" /></div>
+      </div>
+    </section>
+
+    <!-- 3. Stay -->
+    <section id="stay">
+      <div class="section-header">
+        <div class="section-title">Stay</div>
+        <div class="section-sub">Rooms and quiet corners to rest</div>
+      </div>
+      <div class="grid">
+        <div class="grid-item"><img src="images/stay/01.jpg" alt="" /></div>
+        <div class="grid-item"><img src="images/stay/02.jpg" alt="" /></div>
+      </div>
+    </section>
+
+    <!-- 4. Layers -->
+    <section id="layers">
+      <div class="section-header">
+        <div class="section-title">Layers</div>
+        <div class="section-sub">Pools, saunas, lounges, breakfast – layers of each stay</div>
+      </div>
+      <div class="grid">
+        <div class="grid-item"><img src="images/layers/01.jpg" alt="" /></div>
+        <div class="grid-item"><img src="images/layers/02.jpg" alt="" /></div>
+      </div>
+    </section>
+
+    <!-- 5. Moments -->
+    <section id="moments">
+      <div class="section-header">
+        <div class="section-title">Moments</div>
+        <div class="section-sub">Lifestyle & model moments that show how the space is lived in</div>
+      </div>
+      <div class="grid">
+        <div class="grid-item"><img src="images/moments/01.jpg" alt="" /></div>
+        <div class="grid-item"><img src="images/moments/02.jpg" alt="" /></div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="section portfolio">
-    <div class="container">
-      <h2 class="section-title">Portfolio</h2>
-      <p class="section-desc">
-        호텔, 숙소, 상업 인테리어 공간을 중심으로 한 시그니처 작업들을 모았습니다.
-      </p>
-
-      <!-- Category Blocks (구의진 사이트에서 Drone / Architecture / Spatial / Exhibition 느낌) -->
-      <div class="portfolio-grid">
-        <!-- Highlights -->
-        <article class="portfolio-block" id="highlights">
-          <h3>Highlights</h3>
-          <p class="portfolio-caption">
-            브랜드의 얼굴이 되는 키 비주얼 모음.
-          </p>
-          <div class="thumb-grid">
-            <img src="images/highlights-1.jpg" alt="Highlights 1" />
-            <img src="images/highlights-2.jpg" alt="Highlights 2" />
-            <img src="images/highlights-3.jpg" alt="Highlights 3" />
-          </div>
-          <a href="#" class="more-link">View Series</a>
-        </article>
-
-        <!-- Arrival -->
-        <article class="portfolio-block" id="arrival">
-          <h3>Arrival</h3>
-          <p class="portfolio-caption">
-            첫 인상을 결정하는 외관과 로비, 진입 동선.
-          </p>
-          <div class="thumb-grid">
-            <img src="images/arrival-1.jpg" alt="Arrival 1" />
-            <img src="images/arrival-2.jpg" alt="Arrival 2" />
-            <img src="images/arrival-3.jpg" alt="Arrival 3" />
-          </div>
-          <a href="#" class="more-link">View Series</a>
-        </article>
-
-        <!-- Stay -->
-        <article class="portfolio-block" id="stay">
-          <h3>Stay</h3>
-          <p class="portfolio-caption">
-            숙박 경험의 중심이 되는 객실과 침실, 조명.
-          </p>
-          <div class="thumb-grid">
-            <img src="images/stay-1.jpg" alt="Stay 1" />
-            <img src="images/stay-2.jpg" alt="Stay 2" />
-            <img src="images/stay-3.jpg" alt="Stay 3" />
-          </div>
-          <a href="#" class="more-link">View Series</a>
-        </article>
-
-        <!-- Layers -->
-        <article class="portfolio-block" id="layers">
-          <h3>Layers</h3>
-          <p class="portfolio-caption">
-            재료, 질감, 디테일을 쌓아 올린 장면들.
-          </p>
-          <div class="thumb-grid">
-            <img src="images/layers-1.jpg" alt="Layers 1" />
-            <img src="images/layers-2.jpg" alt="Layers 2" />
-            <img src="images/layers-3.jpg" alt="Layers 3" />
-          </div>
-          <a href="#" class="more-link">View Series</a>
-        </article>
-
-        <!-- Moments -->
-        <article class="portfolio-block" id="moments">
-          <h3>Moments</h3>
-          <p class="portfolio-caption">
-            공간과 사용자가 만나는 순간들.
-          </p>
-          <div class="thumb-grid">
-            <img src="images/moments-1.jpg" alt="Moments 1" />
-            <img src="images/moments-2.jpg" alt="Moments 2" />
-            <img src="images/moments-3.jpg" alt="Moments 3" />
-          </div>
-          <a href="#" class="more-link">View Series</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section about">
-    <div class="container about-grid">
-      <div>
-        <h2 class="section-title">About</h2>
-        <p class="section-desc">
-          Studio Frolly는 숙소와 상업공간의 ‘성과가 나오는 이미지’를 만드는 사진 스튜디오입니다.
-        </p>
-      </div>
-      <div class="about-columns">
-        <div class="about-block">
-          <h3>Profile</h3>
-          <p>
-            사진작가 혜진<br />
-            Interior & Hotel Photography<br />
-            AI 콘텐츠 크리에이터
-          </p>
-        </div>
-        <div class="about-block">
-          <h3>Awards</h3>
-          <ul>
-            <li>2024 ○○ 사진 공모전 수상</li>
-            <li>2023 ○○ 호텔 브랜드 캠페인 우수 파트너</li>
-          </ul>
-        </div>
-        <div class="about-block">
-          <h3>Experience</h3>
-          <ul>
-            <li>야놀자 계열 호텔/숙소 촬영 다수</li>
-            <li>인테리어/공간 브랜드 룩북 및 캠페인</li>
-            <li>AI 기반 비주얼 콘텐츠 제작 컨설팅</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section contact">
-    <div class="container contact-grid">
-      <div>
-        <h2 class="section-title">Contact</h2>
-        <p class="section-desc">
-          간단한 메모라도 괜찮아요. 프로젝트, 촬영, 콜라보 제안을 편하게 남겨주세요.
-        </p>
-      </div>
-      <form class="contact-form">
-        <label>
-          NAME
-          <input type="text" name="name" placeholder="성함 / 담당자명" required />
-        </label>
-        <label>
-          E-MAIL
-          <input type="email" name="email" placeholder="답변 받을 이메일" required />
-        </label>
-        <label>
-          PHONE
-          <input type="text" name="phone" placeholder="연락처 (선택)" />
-        </label>
-        <label>
-          MESSAGE
-          <textarea name="message" rows="5" placeholder="프로젝트 내용, 일정, 예산 범위를 적어주세요."></textarea>
-        </label>
-        <label class="checkbox">
-          <input type="checkbox" required />
-          개인정보 처리방침에 동의합니다.
-        </label>
-        <button type="submit" class="submit-btn">Submit</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div>
-        <p>STUDIO FROLLY</p>
-        <p class="footer-copy">© STUDIO FROLLY. ALL RIGHTS RESERVED.</p>
-      </div>
-      <div class="footer-info">
-        <p>Seoul, South Korea</p>
-        <p>Email: hello@studiofrolly.com</p>
-        <p>Instagram: @studio_frolly</p>
-      </div>
-    </div>
+  <footer>
+    <span>© Studio Frolly</span>
+    <span>Warm interior & lifestyle photography</span>
   </footer>
-
-  <script src="main.js"></script>
 </body>
 </html>
-
