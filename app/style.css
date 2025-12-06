@@ -87,7 +87,7 @@ section {
   margin-bottom: 72px;
 }
 
-/* HERO */
+/* HERO (INDEX) */
 .hero-title {
   font-size: 28px;
   letter-spacing: 0.18em;
@@ -120,7 +120,7 @@ section {
   color: var(--text);
 }
 
-/* SECTION HEADERS */
+/* SECTION HEADERS (INDEX) */
 .section-header {
   margin-bottom: 28px;
 }
@@ -186,7 +186,105 @@ section {
   color: #a69889;
 }
 
-/* ABOUT PAGE */
+/* ABOUT PAGE - HERO */
+.about-hero {
+  display: flex;
+  gap: 40px;
+  padding: 40px 0 56px;
+  align-items: flex-end;
+  margin-bottom: 56px;
+}
+
+.about-hero-image {
+  flex: 1.15;
+  background: #e6dfd8;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+.about-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-hero-text {
+  flex: 1;
+  font-size: 14px;
+}
+
+.about-kicker {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.about-hero-title {
+  font-size: 22px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.about-hero-text p + p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+/* ABOUT PAGE - BODY */
+.about-section {
+  margin-bottom: 56px;
+}
+
+.about-section-inner {
+  max-width: 720px;
+  font-size: 14px;
+}
+
+.about-section-body p + p {
+  margin-top: 12px;
+}
+
+/* ABOUT PAGE - COLUMNS (Work Approach / What I Photograph) */
+.about-columns .about-section-inner {
+  max-width: none;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.about-column {
+  flex: 1;
+  font-size: 13px;
+}
+
+.about-subtitle {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.about-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-note {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* (이전 About용 기본 텍스트 스타일 - 필요시 다른 페이지에서 재사용 가능) */
 .page-title-block {
   padding: 40px 0 32px;
 }
@@ -289,6 +387,18 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+  }
+
+  .about-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px 0 40px;
+  }
+
+  .about-columns .about-section-inner {
+    flex-direction: column;
+    gap: 32px;
   }
 
   .lightbox-prev {
