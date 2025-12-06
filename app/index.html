@@ -29,48 +29,65 @@
     <!--     FULLSCREEN HERO SLIDER      -->
     <!-- =============================== -->
 
-    <section class="home-hero-slider">
+<section class="home-hero-slider">
 
-      <!-- slide 1 -->
-      <div class="home-hero-slide is-active"
-           data-title="Highlights"
-           data-sub="Selected mood cuts">
-        <img src="images/hero/01.jpg" alt="Highlights hero image">
-      </div>
+  <!-- 1. Highlights -->
+  <div class="home-hero-slide is-active"
+       data-title="Highlights"
+       data-sub="Selected mood cuts that define Studio Frolly">
+    <img src="images/hero/highlights.jpg" alt="Highlights hero image">
+  </div>
 
-      <!-- slide 2 -->
-      <div class="home-hero-slide"
-           data-title="Arrival"
-           data-sub="First impressions of each stay">
-        <img src="images/hero/02.jpg" alt="Arrival hero image">
-      </div>
+  <!-- 2. Arrival -->
+  <div class="home-hero-slide"
+       data-title="Arrival"
+       data-sub="Entrances, lobbies, first impressions">
+    <img src="images/hero/arrival.jpg" alt="Arrival hero image">
+  </div>
 
-      <!-- slide 3 -->
-      <div class="home-hero-slide"
-           data-title="Stay"
-           data-sub="Rooms & quiet corners to rest">
-        <img src="images/hero/03.jpg" alt="Stay hero image">
-      </div>
+  <!-- 3. Stay -->
+  <div class="home-hero-slide"
+       data-title="Stay"
+       data-sub="Rooms and quiet corners to rest">
+    <img src="images/hero/stay.jpg" alt="Stay hero image">
+  </div>
 
-      <!-- TEXT OVERLAY -->
-      <div class="home-hero-overlay">
-        <div class="home-hero-title" id="heroTitle">Highlights</div>
-        <div class="home-hero-sub" id="heroSub">Selected mood cuts</div>
+  <!-- 4. Layers -->
+  <div class="home-hero-slide"
+       data-title="Layers"
+       data-sub="Textures & materials that build atmosphere">
+    <img src="images/hero/layers.jpg" alt="Layers hero image">
+  </div>
 
-        <div class="home-hero-line"></div>
+  <!-- 5. Moments -->
+  <div class="home-hero-slide"
+       data-title="Moments"
+       data-sub="Lifestyle scenes that show how the space is lived">
+    <img src="images/hero/moments.jpg" alt="Moments hero image">
+  </div>
 
-        <div class="home-hero-year">2022 – 2025</div>
-        <div class="home-hero-copy">© STUDIO FROLLY. ALL RIGHTS RESERVED.</div>
-      </div>
+  <!-- TEXT OVERLAY -->
+  <div class="home-hero-overlay">
+    <div class="home-hero-title" id="heroTitle">Highlights</div>
+    <div class="home-hero-sub" id="heroSub">Selected mood cuts that define Studio Frolly</div>
 
-      <!-- DOT NAVIGATION -->
-      <div class="home-hero-dots">
-        <button class="home-hero-dot is-active"></button>
-        <button class="home-hero-dot"></button>
-        <button class="home-hero-dot"></button>
-      </div>
+    <div class="home-hero-line"></div>
 
-    </section>
+    <div class="home-hero-year">2022 – 2025</div>
+    <div class="home-hero-copy">© STUDIO FROLLY. ALL RIGHTS RESERVED.</div>
+  </div>
+
+  <!-- DOT NAVIGATION (5개로 수정됨) -->
+  <div class="home-hero-dots">
+    <button class="home-hero-dot is-active"></button>
+    <button class="home-hero-dot"></button>
+    <button class="home-hero-dot"></button>
+    <button class="home-hero-dot"></button>
+    <button class="home-hero-dot"></button>
+  </div>
+
+</section>
+
 
 
     <!-- =============================== -->
@@ -159,22 +176,20 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-
       /* ---------------------------
-          1) HERO SLIDER TEXT UPDATE
+          1) HERO SLIDER (텍스트 + 점 네비)
       --------------------------- */
       const slides = document.querySelectorAll('.home-hero-slide');
-      const dots = document.querySelectorAll('.home-hero-dot');
+      const dots   = document.querySelectorAll('.home-hero-dot');
 
       const titleEl = document.getElementById('heroTitle');
-      const subEl = document.getElementById('heroSub');
+      const subEl   = document.getElementById('heroSub');
 
       let current = 0;
 
       function updateText(index) {
-        const slide = slides[index];
-        titleEl.textContent = slide.dataset.title;
-        subEl.textContent = slide.dataset.sub;
+        titleEl.textContent = slides[index].dataset.title;
+        subEl.textContent   = slides[index].dataset.sub;
       }
 
       function showSlide(index) {
@@ -194,13 +209,14 @@
         showSlide(next);
       }
 
+      // 첫 화면 텍스트 설정 + 자동 슬라이드
       updateText(0);
       setInterval(nextSlide, 4200);
 
+      // 점 네비 클릭 이벤트
       dots.forEach((dot, index) => {
         dot.addEventListener('click', () => showSlide(index));
       });
-
 
 
       /* ---------------------------
@@ -232,6 +248,7 @@
 
     });
   </script>
+
 
 </body>
 </html>
