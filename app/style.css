@@ -413,47 +413,51 @@ section {
 /*            FOOTER             */
 /* ============================= */
 
-/* ① 기본 footer – 인덱스 / 어바웃에서 쓰는 푸터 */
+/* 공통 폰트 사이즈 */
 footer {
   font-size: 11px;
 }
 
-/* .site-footer가 아닌 일반 footer만 이전 레이아웃 유지 */
+/* 인덱스 / 어바웃용 라이트 푸터 */
 footer:not(.site-footer) {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 20px 32px;
-  color: var(--muted);
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  color: #555;              /* 전체 텍스트 살짝 더 진하게 */
 }
 
-
-/* ② 검은 배경 브랜드 푸터 – Contact 전용 */
-.site-footer {
-  background: #111;
-  color: #d5d0c8;
-  padding: 52px 20px 40px;
-  margin-top: 80px;
+/* 각 항목을 동일 비율 컬럼처럼 보이게 */
+footer:not(.site-footer) span {
+  flex: 1 1 0;
 }
 
-.site-footer .footer-inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  text-align: center;
-  line-height: 1.8;
+/* 왼쪽 / 가운데는 왼쪽 정렬 유지 */
+footer:not(.site-footer) span:nth-child(1),
+footer:not(.site-footer) span:nth-child(2) {
+  text-align: left;
 }
 
-.site-footer .footer-inner > div {
-  font-size: 12px;
+/* 오른쪽 카피라이트만 살짝 옅은 컬러 + 오른쪽 정렬 */
+footer:not(.site-footer) span:nth-child(3) {
+  text-align: right;
+  color: var(--muted);
 }
 
-.site-footer .footer-copy {
-  margin-top: 10px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #9b9185;
+/* 모바일에서는 세 줄로 쌓이게 */
+@media (max-width: 640px) {
+  footer:not(.site-footer) {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  footer:not(.site-footer) span {
+    flex: none;
+    text-align: left;
+  }
 }
 
 
