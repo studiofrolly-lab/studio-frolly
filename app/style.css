@@ -247,13 +247,13 @@ section {
   overflow: hidden;
   border-radius: 0;
   background: #e6dfd8;
+  aspect-ratio: 4 / 5;
 }
 
 .grid-item img {
   width: 100%;
-  height: auto;      /* 🔥 비율 유지 */
-  object-fit: contain; /* 🔥 잘림 없음 */
-  transition: transform 0.4s ease;
+  height: 100%;
+  object-fit: cover;
 }
 
 
