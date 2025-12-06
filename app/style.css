@@ -707,3 +707,7 @@ footer {
     align-self: stretch;
   }
 }
+/* 인덱스 페이지에서 헤더와 히어로 사이 공백 제거 */
+body.index-page main {
+  padding-top: 0 !important;
+}
