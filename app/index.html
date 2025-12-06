@@ -25,54 +25,37 @@
 
   <main>
 
-    <!-- HERO: 이미지 슬라이더 + 텍스트 오버레이 -->
-    <section class="hero">
-      <div class="hero-slider">
+ <!-- FULLSCREEN HERO SLIDER -->
+<section class="home-hero-slider">
 
-        <!-- 섹션별 히어로 이미지 -->
-        <div class="hero-slide is-active">
-          <img src="images/index-hero/highlights.jpg" alt="Highlights hero image">
-        </div>
-        <div class="hero-slide">
-          <img src="images/index-hero/arrival.jpg" alt="Arrival hero image">
-        </div>
-        <div class="hero-slide">
-          <img src="images/index-hero/stay.jpg" alt="Stay hero image">
-        </div>
-        <div class="hero-slide">
-          <img src="images/index-hero/layers.jpg" alt="Layers hero image">
-        </div>
-        <div class="hero-slide">
-          <img src="images/index-hero/moments.jpg" alt="Moments hero image">
-        </div>
+  <!-- slide 1 -->
+  <div class="home-hero-slide is-active">
+    <img src="images/hero/01.jpg" alt="Studio Frolly Hero Image 01">
+  </div>
 
-        <!-- 텍스트 오버레이 -->
-        <div class="hero-overlay">
-          <div class="hero-title">STUDIO FROLLY</div>
-          <div class="hero-sub">
-            Warm interior &amp; lifestyle photography for small hotels and cozy spaces.
-          </div>
-        </div>
+  <!-- slide 2 -->
+  <div class="home-hero-slide">
+    <img src="images/hero/02.jpg" alt="Studio Frolly Hero Image 02">
+  </div>
 
-        <!-- 점 네비게이션 (규진 페이지 느낌) -->
-        <div class="hero-dots" aria-label="Hero images">
-          <button type="button" class="hero-dot is-active" aria-label="Highlights"></button>
-          <button type="button" class="hero-dot" aria-label="Arrival"></button>
-          <button type="button" class="hero-dot" aria-label="Stay"></button>
-          <button type="button" class="hero-dot" aria-label="Layers"></button>
-          <button type="button" class="hero-dot" aria-label="Moments"></button>
-        </div>
-      </div>
+  <!-- slide 3 -->
+  <div class="home-hero-slide">
+    <img src="images/hero/03.jpg" alt="Studio Frolly Hero Image 03">
+  </div>
 
-      <!-- 섹션 점프용 서브내비는 UX상 유용해서 일단 유지 -->
-      <div class="subnav">
-        <a href="#highlights">Highlights</a>
-        <a href="#arrival">Arrival</a>
-        <a href="#stay">Stay</a>
-        <a href="#layers">Layers</a>
-        <a href="#moments">Moments</a>
-      </div>
-    </section>
+  <!-- CENTER TEXT -->
+  <div class="home-hero-overlay">
+    <div class="home-hero-title">STUDIO FROLLY</div>
+    <div class="home-hero-sub">Warm interior &amp; lifestyle photography</div>
+
+    <div class="home-hero-line"></div>
+
+    <div class="home-hero-year">2022 – 2025</div>
+    <div class="home-hero-copy">© STUDIO FROLLY. ALL RIGHTS RESERVED.</div>
+  </div>
+
+</section>
+
 
     <!-- HIGHLIGHTS -->
     <section id="highlights">
@@ -340,3 +323,17 @@
   </script>
 </body>
 </html>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('.home-hero-slide');
+  let current = 0;
+
+  function nextSlide() {
+    slides[current].classList.remove('is-active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('is-active');
+  }
+
+  setInterval(nextSlide, 4200); /* 4.2초마다 변경 */
+});
+</script>
