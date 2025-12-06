@@ -439,6 +439,67 @@ section {
   font-weight: 500;
   margin-bottom: 6px;
 }
+/* ============================= */
+/*        ABOUT TEXT AREA        */
+/* ============================= */
+
+.about-intro,
+.about-section {
+  max-width: 720px;
+  margin: 40px auto 60px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.about-intro-en {
+  font-size: 13px;
+  font-style: italic;
+  color: #999;
+  margin-bottom: 14px;
+}
+
+.about-intro p + p {
+  margin-top: 8px;
+}
+
+.about-section-title {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.about-section-list {
+  list-style: disc;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-section-list li strong {
+  font-weight: 600;
+}
+
+.about-experience-block + .about-experience-block {
+  margin-top: 24px;
+}
+
+.about-experience-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
+/* 모바일 여백 조금 줄이기 */
+@media (max-width: 640px) {
+  .about-intro,
+  .about-section {
+    margin: 32px 20px 48px;
+  }
+}
 
 /* ============================= */
 /*             FOOTER            */
