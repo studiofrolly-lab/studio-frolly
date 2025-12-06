@@ -644,10 +644,10 @@ section {
   color: var(--muted);
 }
 
-/* MOBILE */
+/* MOBILE: HOME & ABOUT 공통 */
 @media (max-width: 640px) {
 
-
+  /* 홈 히어로 텍스트 줄이기 */
   .home-hero-title,
   #heroTitle {
     font-size: 32px;
@@ -662,25 +662,18 @@ section {
     height: 50px;
   }
 
- /* ===== MOBILE (ABOUT) ===== */
-@media (max-width: 640px) {
+  /* ABOUT: 히어로 영역 높이 */
   .about-hero-slider {
     height: 60vh;
   }
 
-  /* 히어로 텍스트 가운데 정렬 + 화면 안에 꽉 들어오게 */
- /* ===== MOBILE (ABOUT) ===== */
-@media (max-width: 640px) {
-  .about-hero-slider {
-    height: 60vh;
-  }
-
-  /* 🔧 다시 왼쪽 아래 정렬 + 화면 안에 꽉 */
+  /* ABOUT: 모바일에선 왼쪽 아래 정렬 + 화면 안에 꽉 */
   .about-hero-overlay {
     left: 24px;
-    right: 24px;          /* → 오른쪽도 같이 잡아서 화면 밖으로 안 나가게 */
+    right: 24px;
     bottom: 32px;
-    transform: none;      /* 중앙정렬 해제 */
+    top: auto;
+    transform: none;
     max-width: none;
     text-align: left;
   }
@@ -717,11 +710,11 @@ section {
   }
 }
 
-
 /* 인덱스 페이지에서 헤더와 히어로 사이 공백 제거 */
 body.index-page main {
   padding-top: 0 !important;
 }
+
 /* ============================= */
 /*          CONTACT PAGE         */
 /* ============================= */
@@ -797,7 +790,7 @@ body.index-page main {
   color: var(--muted);
 }
 
-/* 모바일 대응 */
+/* CONTACT 모바일 */
 @media (max-width: 640px) {
   .contact-card {
     padding: 24px 18px 22px;
