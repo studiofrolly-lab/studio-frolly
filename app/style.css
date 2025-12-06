@@ -770,11 +770,24 @@ footer {
     height: 50px;
   }
 }
+/* HERO 이미지 톤 다운 오버레이 */
 .home-hero-slider::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.28); /* 투명도 조절 가능 */
   pointer-events: none;
   z-index: 1;
 }
+
+/* 텍스트를 오버레이 위에 나오게 */
+.home-hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ffffff;
+  z-index: 2;   /* 🔥 중요: 이미지/오버레이 위로 올라오게 */
+}
+
