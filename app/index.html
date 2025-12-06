@@ -200,26 +200,32 @@
       /* -----------------------------------
          1) HOME HERO SLIDER (텍스트 연동)
       ----------------------------------- */
-const titleEl = document.getElementById('heroTitle');
-const subEl   = document.getElementById('heroSub');
-const subKrEl = document.getElementById('heroSubKr');
+      const slides   = Array.from(document.querySelectorAll('.home-hero-slide'));
+      const dots     = Array.from(document.querySelectorAll('.home-hero-dot'));
+      const titleEl  = document.getElementById('heroTitle');
+      const subEl    = document.getElementById('heroSub');
+      const subKrEl  = document.getElementById('heroSubKr');
 
-function updateText(index) {
-  if (!slides[index]) return;
+      let current     = 0;
+      const INTERVAL  = 4200;
+      let heroTimer   = null;
 
-  const slide    = slides[index];
-  const title    = slide.dataset.title || 'STUDIO FROLLY';
-  const sub      = slide.dataset.sub   || '';
-  const subKr    = slide.dataset.subKr || '';
+      function updateText(index) {
+        if (!slides[index]) return;
+        const slide = slides[index];
 
-  if (titleEl)  titleEl.textContent = title;
-  if (subEl)    subEl.textContent   = sub;
-  if (subKrEl)  subKrEl.textContent = subKr;
-}
+        const title = slide.dataset.title || 'STUDIO FROLLY';
+        const sub   = slide.dataset.sub   || '';
+        const subKr = slide.dataset.subKr || '';
 
+        if (titleEl)  titleEl.textContent = title;
+        if (subEl)    subEl.textContent   = sub;
+        if (subKrEl)  subKrEl.textContent = subKr;
+      }
 
       function showSlide(index) {
         if (!slides.length) return;
+
         slides[current].classList.remove('is-active');
         dots[current].classList.remove('is-active');
 
@@ -227,6 +233,7 @@ function updateText(index) {
 
         slides[current].classList.add('is-active');
         dots[current].classList.add('is-active');
+
         updateText(current);
       }
 
@@ -241,6 +248,7 @@ function updateText(index) {
       }
 
       if (slides.length && dots.length && slides.length === dots.length) {
+        // 첫 슬라이드 텍스트 세팅 + 자동 재생 시작
         updateText(0);
         startHeroTimer();
 
@@ -256,9 +264,9 @@ function updateText(index) {
          2) GRID AUTO-LOAD
       ----------------------------------- */
       const sectionIds = ['highlights', 'arrival', 'stay', 'layers', 'moments'];
-      const MAX_PER_SECTION = 50;
-      const INITIAL_VISIBLE = 4;
-      const LOAD_MORE_STEP = 4;
+      const MAX_PER_SECTION   = 50;
+      const INITIAL_VISIBLE   = 4;
+      const LOAD_MORE_STEP    = 4;
 
       sectionIds.forEach((sectionId) => {
         const grid = document.querySelector('#' + sectionId + ' .grid');
@@ -290,7 +298,7 @@ function updateText(index) {
           const sectionEl = document.getElementById(sectionId);
           if (!sectionEl) return;
 
-          const grid = sectionEl.querySelector('.grid');
+          const grid  = sectionEl.querySelector('.grid');
           const items = Array.from(grid.querySelectorAll('.grid-item'));
           const total = items.length;
           if (total <= INITIAL_VISIBLE) return;
@@ -335,11 +343,11 @@ function updateText(index) {
         const images = Array.from(document.querySelectorAll('.grid-item img'));
         if (!images.length) return;
 
-        const lightbox = document.getElementById('lightbox');
+        const lightbox      = document.getElementById('lightbox');
         const lightboxImage = lightbox.querySelector('.lightbox-image');
-        const btnClose = lightbox.querySelector('.lightbox-close');
-        const btnPrev = lightbox.querySelector('.lightbox-prev');
-        const btnNext = lightbox.querySelector('.lightbox-next');
+        const btnClose      = lightbox.querySelector('.lightbox-close');
+        const btnPrev       = lightbox.querySelector('.lightbox-prev');
+        const btnNext       = lightbox.querySelector('.lightbox-next');
 
         let currentIndex = 0;
 
@@ -401,13 +409,14 @@ function updateText(index) {
 
         document.addEventListener('keydown', (e) => {
           if (!lightbox.classList.contains('is-open')) return;
-          if (e.key === 'Escape') closeLightbox();
-          if (e.key === 'ArrowLeft') showPrev();
-          if (e.key === 'ArrowRight') showNext();
+          if (e.key === 'Escape')      closeLightbox();
+          if (e.key === 'ArrowLeft')   showPrev();
+          if (e.key === 'ArrowRight')  showNext();
         });
       });
     });
   </script>
 </body>
 </html>
+
 
