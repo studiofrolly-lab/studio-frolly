@@ -478,8 +478,8 @@ section {
   gap: 6px;
 }
 
-.about-section-list li strong {
-  font-weight: 600;
+.about-section-list {
+  font-weight: 400;
 }
 
 .about-experience-block + .about-experience-block {
@@ -488,7 +488,7 @@ section {
 
 .about-experience-title {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 8px;
   letter-spacing: 0.04em;
 }
