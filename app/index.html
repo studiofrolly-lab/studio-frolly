@@ -49,18 +49,7 @@
           <div class="section-desc">Selected cuts that show the mood of Studio Frolly</div>
         </div>
       </div>
-
-      <div class="grid">
-        <div class="grid-item">
-          <img src="images/highlights/01.jpg" alt="Highlight 01">
-        </div>
-        <div class="grid-item">
-          <img src="images/highlights/02.jpg" alt="Highlight 02">
-        </div>
-        <div class="grid-item">
-          <img src="images/highlights/03.jpg" alt="Highlight 03">
-        </div>
-      </div>
+      <div class="grid"></div>
     </section>
 
     <!-- ARRIVAL -->
@@ -71,15 +60,7 @@
           <div class="section-desc">Entrances, lobbies and the first impression of each stay</div>
         </div>
       </div>
-
-      <div class="grid">
-        <div class="grid-item">
-          <img src="images/arrival/01.jpg" alt="Arrival 01">
-        </div>
-        <div class="grid-item">
-          <img src="images/arrival/02.jpg" alt="Arrival 02">
-        </div>
-      </div>
+      <div class="grid"></div>
     </section>
 
     <!-- STAY -->
@@ -90,15 +71,7 @@
           <div class="section-desc">Rooms, light, and quiet corners to rest</div>
         </div>
       </div>
-
-      <div class="grid">
-        <div class="grid-item">
-          <img src="images/stay/01.jpg" alt="Stay 01">
-        </div>
-        <div class="grid-item">
-          <img src="images/stay/02.jpg" alt="Stay 02">
-        </div>
-      </div>
+      <div class="grid"></div>
     </section>
 
     <!-- LAYERS -->
@@ -109,15 +82,7 @@
           <div class="section-desc">Textures, materials and the small details that build a space</div>
         </div>
       </div>
-
-      <div class="grid">
-        <div class="grid-item">
-          <img src="images/layers/01.jpg" alt="Layers 01">
-        </div>
-        <div class="grid-item">
-          <img src="images/layers/02.jpg" alt="Layers 02">
-        </div>
-      </div>
+      <div class="grid"></div>
     </section>
 
     <!-- MOMENTS -->
@@ -128,15 +93,7 @@
           <div class="section-desc">Lifestyle scenes that show how the space is lived</div>
         </div>
       </div>
-
-      <div class="grid">
-        <div class="grid-item">
-          <img src="images/moments/01.jpg" alt="Moments 01">
-        </div>
-        <div class="grid-item">
-          <img src="images/moments/02.jpg" alt="Moments 02">
-        </div>
-      </div>
+      <div class="grid"></div>
     </section>
 
   </main>
@@ -155,9 +112,39 @@
     <button class="lightbox-next" type="button" aria-label="Next">›</button>
   </div>
 
-  <!-- LIGHTBOX SCRIPT -->
+  <!-- SCRIPT: 섹션별 이미지 자동 생성 + 라이트박스 -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // ✅ 여기 숫자 배열만 수정하면 갯수 무제한으로 늘릴 수 있음
+      const imagesBySection = {
+        highlights: ['01', '02', '03'],       // images/highlights/01.jpg, 02.jpg, 03.jpg ...
+        arrival:    ['01', '02'],             // images/arrival/01.jpg ...
+        stay:       ['01', '02'],
+        layers:     ['01', '02'],
+        moments:    ['01', '02']
+      };
+
+      // 섹션별로 grid 안에 이미지 DOM 자동 생성
+      Object.entries(imagesBySection).forEach(([sectionId, files]) => {
+        const grid = document.querySelector('#' + sectionId + ' .grid');
+        if (!grid) return;
+
+        grid.innerHTML = '';
+
+        files.forEach((name) => {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'grid-item';
+
+          const img = document.createElement('img');
+          img.src = `images/${sectionId}/${name}.jpg`;
+          img.alt = `${sectionId} ${name}`;
+
+          wrapper.appendChild(img);
+          grid.appendChild(wrapper);
+        });
+      });
+
+      // 🔍 라이트박스 세팅
       const images = Array.from(document.querySelectorAll('.grid-item img'));
       if (!images.length) return;
 
@@ -219,7 +206,6 @@
       });
 
       lightbox.addEventListener('click', (e) => {
-        // 배경 클릭하면 닫힘 (이미지/버튼은 제외)
         if (e.target === lightbox) {
           closeLightbox();
         }
