@@ -647,11 +647,7 @@ footer span:last-child {
 
 /* MOBILE */
 @media (max-width: 640px) {
-  .nav-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
+
 
   .home-hero-title,
   #heroTitle {
