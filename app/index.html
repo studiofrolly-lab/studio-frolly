@@ -26,72 +26,72 @@
   <main>
 
     <!-- =============================== -->
-    <!--     FULLSCREEN HERO SLIDER      -->
+    <!--        FULLSCREEN HERO          -->
     <!-- =============================== -->
 
-<section class="home-hero-slider">
+    <section class="home-hero-slider">
 
-  <!-- 1. Highlights -->
-  <div class="home-hero-slide is-active"
-       data-title="Highlights"
-       data-sub="Selected mood cuts that define Studio Frolly">
-    <img src="images/hero/highlights.jpg" alt="Highlights hero image">
-  </div>
+      <!-- 1. Highlights -->
+      <div class="home-hero-slide is-active"
+           data-title="Highlights"
+           data-sub="Selected cuts that show the mood of Studio Frolly">
+        <img src="images/hero/highlights.jpg" alt="Highlights hero image">
+      </div>
 
-  <!-- 2. Arrival -->
-  <div class="home-hero-slide"
-       data-title="Arrival"
-       data-sub="Entrances, lobbies, first impressions">
-    <img src="images/hero/arrival.jpg" alt="Arrival hero image">
-  </div>
+      <!-- 2. Arrival -->
+      <div class="home-hero-slide"
+           data-title="Arrival"
+           data-sub="Entrances, lobbies, and first impressions">
+        <img src="images/hero/arrival.jpg" alt="Arrival hero image">
+      </div>
 
-  <!-- 3. Stay -->
-  <div class="home-hero-slide"
-       data-title="Stay"
-       data-sub="Rooms and quiet corners to rest">
-    <img src="images/hero/stay.jpg" alt="Stay hero image">
-  </div>
+      <!-- 3. Stay -->
+      <div class="home-hero-slide"
+           data-title="Stay"
+           data-sub="Rooms, light, and quiet corners to rest">
+        <img src="images/hero/stay.jpg" alt="Stay hero image">
+      </div>
 
-  <!-- 4. Layers -->
-  <div class="home-hero-slide"
-       data-title="Layers"
-       data-sub="Textures & materials that build atmosphere">
-    <img src="images/hero/layers.jpg" alt="Layers hero image">
-  </div>
+      <!-- 4. Layers -->
+      <div class="home-hero-slide"
+           data-title="Layers"
+           data-sub="Textures, materials, and small details">
+        <img src="images/hero/layers.jpg" alt="Layers hero image">
+      </div>
 
-  <!-- 5. Moments -->
-  <div class="home-hero-slide"
-       data-title="Moments"
-       data-sub="Lifestyle scenes that show how the space is lived">
-    <img src="images/hero/moments.jpg" alt="Moments hero image">
-  </div>
+      <!-- 5. Moments -->
+      <div class="home-hero-slide"
+           data-title="Moments"
+           data-sub="Lifestyle scenes that show how the space is lived">
+        <img src="images/hero/moments.jpg" alt="Moments hero image">
+      </div>
 
-  <!-- TEXT OVERLAY -->
-  <div class="home-hero-overlay">
-    <div class="home-hero-title" id="heroTitle">Highlights</div>
-    <div class="home-hero-sub" id="heroSub">Selected mood cuts that define Studio Frolly</div>
+      <!-- CENTER TEXT -->
+      <div class="home-hero-overlay">
+        <div class="home-hero-title" id="heroTitle">Highlights</div>
+        <div class="home-hero-sub" id="heroSub">
+          Selected cuts that show the mood of Studio Frolly
+        </div>
 
-    <div class="home-hero-line"></div>
+        <div class="home-hero-line"></div>
 
-    <div class="home-hero-year">2022 – 2025</div>
-    <div class="home-hero-copy">© STUDIO FROLLY. ALL RIGHTS RESERVED.</div>
-  </div>
+        <div class="home-hero-year">2022 – 2025</div>
+        <div class="home-hero-copy">© STUDIO FROLLY. ALL RIGHTS RESERVED.</div>
+      </div>
 
-  <!-- DOT NAVIGATION (5개로 수정됨) -->
-  <div class="home-hero-dots">
-    <button class="home-hero-dot is-active"></button>
-    <button class="home-hero-dot"></button>
-    <button class="home-hero-dot"></button>
-    <button class="home-hero-dot"></button>
-    <button class="home-hero-dot"></button>
-  </div>
+      <!-- DOT NAVIGATION -->
+      <div class="home-hero-dots">
+        <button class="home-hero-dot is-active" aria-label="Highlights"></button>
+        <button class="home-hero-dot" aria-label="Arrival"></button>
+        <button class="home-hero-dot" aria-label="Stay"></button>
+        <button class="home-hero-dot" aria-label="Layers"></button>
+        <button class="home-hero-dot" aria-label="Moments"></button>
+      </div>
 
-</section>
-
-
+    </section>
 
     <!-- =============================== -->
-    <!--   GRID SECTIONS (기존 동일)     -->
+    <!--           GRID SECTIONS         -->
     <!-- =============================== -->
 
     <!-- HIGHLIGHTS -->
@@ -164,10 +164,10 @@
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" type="button">×</button>
-    <button class="lightbox-prev" type="button">‹</button>
+    <button class="lightbox-close" type="button" aria-label="Close">×</button>
+    <button class="lightbox-prev" type="button" aria-label="Previous">‹</button>
     <img class="lightbox-image" src="" alt="">
-    <button class="lightbox-next" type="button">›</button>
+    <button class="lightbox-next" type="button" aria-label="Next">›</button>
   </div>
 
   <!-- =============================== -->
@@ -188,8 +188,9 @@
       let current = 0;
 
       function updateText(index) {
-        titleEl.textContent = slides[index].dataset.title;
-        subEl.textContent   = slides[index].dataset.sub;
+        const slide = slides[index];
+        titleEl.textContent = slide.dataset.title || 'Studio Frolly';
+        subEl.textContent   = slide.dataset.sub   || '';
       }
 
       function showSlide(index) {
@@ -220,7 +221,7 @@
 
 
       /* ---------------------------
-          2) GRID AUTO-LOAD (기존)
+          2) GRID AUTO-LOAD
       --------------------------- */
       const sectionIds = ['highlights', 'arrival', 'stay', 'layers', 'moments'];
       const MAX_PER_SECTION = 50;
@@ -246,9 +247,134 @@
         }
       });
 
+      /* ---------------------------
+          3) LOAD MORE + LIGHTBOX
+      --------------------------- */
+      window.addEventListener('load', () => {
+        const sectionState = {};
+
+        // 각 섹션별 LOAD MORE 세팅
+        sectionIds.forEach((sectionId) => {
+          const sectionEl = document.getElementById(sectionId);
+          const grid = sectionEl.querySelector('.grid');
+          const items = Array.from(grid.querySelectorAll('.grid-item'));
+          const total = items.length;
+
+          if (total <= INITIAL_VISIBLE) return;
+
+          // 처음엔 INITIAL_VISIBLE 개만 보이게
+          items.forEach((item, idx) => {
+            if (idx >= INITIAL_VISIBLE) {
+              item.classList.add('is-hidden');
+            }
+          });
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'load-more';
+          btn.textContent = `LOAD MORE (${INITIAL_VISIBLE} / ${total})`;
+
+          sectionState[sectionId] = {
+            items,
+            total,
+            visible: INITIAL_VISIBLE,
+            btn
+          };
+
+          btn.addEventListener('click', () => {
+            const state = sectionState[sectionId];
+            const nextVisible = Math.min(state.visible + LOAD_MORE_STEP, state.total);
+
+            for (let i = state.visible; i < nextVisible; i++) {
+              state.items[i].classList.remove('is-hidden');
+            }
+
+            state.visible = nextVisible;
+
+            if (state.visible >= state.total) {
+              state.btn.remove();
+            } else {
+              state.btn.textContent = `LOAD MORE (${state.visible} / ${state.total})`;
+            }
+          });
+
+          sectionEl.appendChild(btn);
+        });
+
+        // 라이트박스 세팅
+        const images = Array.from(document.querySelectorAll('.grid-item img'));
+        if (!images.length) return;
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = lightbox.querySelector('.lightbox-image');
+        const btnClose = lightbox.querySelector('.lightbox-close');
+        const btnPrev = lightbox.querySelector('.lightbox-prev');
+        const btnNext = lightbox.querySelector('.lightbox-next');
+        let currentIndex = 0;
+
+        function setImage() {
+          const img = images[currentIndex];
+          if (!img) return;
+          lightboxImage.src = img.src;
+          lightboxImage.alt = img.alt || '';
+        }
+
+        function openLightbox(index) {
+          currentIndex = index;
+          setImage();
+          lightbox.classList.add('is-open');
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove('is-open');
+        }
+
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          setImage();
+        }
+
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length;
+          setImage();
+        }
+
+        images.forEach((img, index) => {
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLightbox(index);
+          });
+        });
+
+        btnClose.addEventListener('click', (e) => {
+          e.stopPropagation();
+          closeLightbox();
+        });
+
+        btnPrev.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showPrev();
+        });
+
+        btnNext.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showNext();
+        });
+
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox.classList.contains('is-open')) return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') showPrev();
+          if (e.key === 'ArrowRight') showNext();
+        });
+      });
     });
   </script>
-
 
 </body>
 </html>
