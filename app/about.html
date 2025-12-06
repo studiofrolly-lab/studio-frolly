@@ -8,12 +8,15 @@
 </head>
 
 <body class="about-page">
+  <!-- HEADER -->
   <header>
     <div class="nav-inner">
-      <div class="logo"><a href="index.html">STUDIO FROLLY</a></div>
+      <div class="logo">
+        <a href="index.html">STUDIO FROLLY</a>
+      </div>
       <nav>
         <ul>
-          <li><a class="active" href="about.html">About</a></li>
+          <li><a href="about.html" class="active">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -21,93 +24,116 @@
   </header>
 
   <main>
+
+    <!-- ========================= -->
+    <!--        HERO SLIDER        -->
+    <!-- ========================= -->
     <section class="about-hero-slider">
-
       <div class="about-hero-slide is-active">
-        <img src="images/about/hero-01.jpg" alt="Studio Frolly photographer 01" />
+        <img src="images/about/hero-01.jpg" alt="Studio Frolly photographer 01">
       </div>
-
       <div class="about-hero-slide">
-        <img src="images/about/hero-02.jpg" alt="Studio Frolly photographer 02" />
+        <img src="images/about/hero-02.jpg" alt="Studio Frolly photographer 02">
       </div>
 
+      <!-- 텍스트 오버레이: 데스크탑/모바일 모두 왼쪽 아래 -->
       <div class="about-hero-overlay">
-        <div class="about-hero-role">Branding·Interior Photographer</div>
+        <div class="about-hero-role">Branding · Interior Photography Studio</div>
         <div class="about-hero-name">STUDIO FROLLY</div>
-        <div class="about-hero-desc">공간과 브랜드의 이야기를 이미지로 완성합니다.</div>
+        <div class="about-hero-desc">
+          공간과 브랜드의 이야기를 이미지로 완성합니다.
+        </div>
       </div>
 
-      <div class="about-hero-dots">
-        <button class="about-hero-dot is-active"></button>
-        <button class="about-hero-dot"></button>
+      <!-- 점 네비게이션 -->
+      <div class="about-hero-dots" aria-label="About hero images">
+        <button class="about-hero-dot is-active" type="button" aria-label="Hero 1"></button>
+        <button class="about-hero-dot" type="button" aria-label="Hero 2"></button>
       </div>
-
     </section>
-<!-- ABOUT : INTRO -->
-<section class="about-story">
-  <p class="about-lead-ko">
-    Studio Frolly는 공간과 브랜드의 이야기를 이미지로 완성합니다.
-  </p>
-  <p class="about-lead-en">
-    <em>Studio Frolly translates the narratives of spaces and brands into visual language.</em>
-  </p>
-  <p>
-    호텔, 숙소, 라이프스타일 공간을 촬영하며
-    빛이 만들어내는 자연스러운 순간을 이미지로 번역합니다.
-    사진을 통해 공간의 성격이 가장 선명하게 드러나는 지점을 탐구합니다.
-  </p>
-</section>
 
-<!-- ABOUT : PROJECTS & APPROACH / EXPERIENCE (2-COLUMN) -->
-<section class="about-columns-v2">
-  <!-- LEFT : Projects & Collaborations -->
-  <div class="about-block">
-    <h2>Projects &amp; Collaborations</h2>
-    <p>
-      Studio Frolly는 야놀자 브랜드 호텔을 비롯해
-      소규모 호텔, 스테이, 라이프스타일 브랜드와의 장기 프로젝트를 중심으로
-      공간과 브랜드의 비주얼 아카이브를 만들어가고 있습니다.
-    </p>
-    <ul>
-      <li>YANOLJA BRAND HOTELS — 하운드, 브라운닷 등 계열 브랜드 호텔 촬영</li>
-      <li>THEHYOSIK — 브랜드 리브랜딩 및 공간 경험 중심 이미지 구축</li>
-      <li>512PROJECT — 주거 &amp; 상업 공간 촬영, 홈페이지·홍보용 이미지 제작</li>
-      <li>기타 독립 스테이 &amp; 라이프스타일 브랜드 촬영 프로젝트</li>
-    </ul>
-  </div>
+    <!-- ========================= -->
+    <!--          INTRO             -->
+    <!-- ========================= -->
+    <section class="about-intro">
+      <p class="about-intro-en">
+        Hotel, stay, and lifestyle spaces — Studio Frolly translates natural moments shaped by light into images.
+        We explore the point where the character of a space appears most vividly.
+      </p>
+      <p class="about-intro-kr">
+        Studio Frolly는 공간과 브랜드의 이야기를 이미지로 완성합니다.<br>
+        호텔, 숙소, 라이프스타일 공간을 촬영하며<br>
+        빛이 만들어내는 자연스러운 순간을 이미지로 번역합니다.<br>
+        사진을 통해 공간의 성격이 가장 선명하게 드러나는 지점을 탐구합니다.
+      </p>
+    </section>
 
-  <!-- RIGHT : Approach & Experience -->
-  <div class="about-block">
-    <h2>Studio Frolly’s Approach</h2>
-    <p>
-      Studio Frolly는 공간이 가진 이야기를 가장 자연스러운 방식으로 기록합니다.
-      과한 보정 없이 브랜드가 지닌 맥락과 정체성이 빛날 수 있는
-      차분하고 섬세한 방식을 지향합니다.
-    </p>
+    <!-- ========================= -->
+    <!--  PROJECTS & COLLABS       -->
+    <!-- ========================= -->
+    <section class="about-section">
+      <h2 class="about-section-title">Projects &amp; Collaborations</h2>
+      <ul class="about-section-list">
+        <li>
+          <strong>YANOLJA BRAND HOTELS</strong> — 하운드, 브라운닷 등 계열 브랜드 호텔 촬영
+        </li>
+        <li>
+          <strong>THEHYOSIK</strong> — 브랜드 리브랜딩 및 공간 경험 중심 이미지 구축
+        </li>
+        <li>
+          <strong>512PROJECT</strong> — 주거 &amp; 상업 공간 촬영, 홈페이지·홍보용 이미지 제작
+        </li>
+        <li>
+          기타 독립 스테이 &amp; 라이프스타일 브랜드 촬영 프로젝트
+        </li>
+      </ul>
+    </section>
 
-    <h3 style="margin-top: 20px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;">
-      Experience
-    </h3>
+    <!-- ========================= -->
+    <!--       APPROACH            -->
+    <!-- ========================= -->
+    <section class="about-section">
+      <h2 class="about-section-title">Studio Frolly’s Approach</h2>
+      <div class="about-section-body">
+        <p>
+          Studio Frolly는 공간이 가진 이야기를 가장 자연스러운 방식으로 기록합니다.
+        </p>
+        <p>
+          과한 보정 없이 브랜드의 맥락과 정체성이 드러날 수 있는<br>
+          차분하고 섬세한 접근을 지향합니다.
+        </p>
+      </div>
+    </section>
 
-    <p><strong>2022 – Present | Studio Frolly — Photographer &amp; Content Creator</strong></p>
-    <ul>
-      <li>호텔·브랜드·인테리어 촬영</li>
-      <li>AI 기반 사진·영상 콘텐츠 제작</li>
-      <li>공간 브랜딩 비주얼 전략 제작</li>
-    </ul>
+    <!-- ========================= -->
+    <!--        EXPERIENCE          -->
+    <!-- ========================= -->
+    <section class="about-section">
+      <h2 class="about-section-title">Experience</h2>
 
-    <p style="margin-top: 10px;">
-      <strong>2013 – 2024 | Yanolja Visual Lab</strong>
-    </p>
-    <ul>
-      <li>연간 300+ 숙소 촬영</li>
-      <li>브랜드 촬영 매뉴얼 restructure 및 이미지 품질 고도화</li>
-      <li>호텔/숙소 온라인 채널 비주얼 개선 프로젝트 수행</li>
-    </ul>
-  </div>
-</section>
+      <div class="about-exp-block">
+        <h3 class="about-exp-role">
+          2022 – Present | Studio Frolly — Photographer &amp; Content Creator
+        </h3>
+        <ul class="about-section-list">
+          <li>호텔·브랜드·인테리어 촬영</li>
+          <li>AI 기반 사진·영상 콘텐츠 제작</li>
+          <li>공간 브랜딩 비주얼 전략 제작</li>
+        </ul>
+      </div>
 
-    <!-- STORY + RIGHT BLOCKS 그대로 유지 -->
+      <div class="about-exp-block">
+        <h3 class="about-exp-role">
+          2013 – 2024 | Yanolja Visual Lab
+        </h3>
+        <ul class="about-section-list">
+          <li>연간 300+ 숙소 촬영</li>
+          <li>브랜드 촬영 매뉴얼 restructure</li>
+          <li>온라인 비주얼 개선 프로젝트 수행</li>
+        </ul>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
@@ -118,6 +144,48 @@
     </div>
   </footer>
 
-  <script src="about.js"></script>
+  <!-- ABOUT 전용 슬라이더 JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = Array.from(document.querySelectorAll('.about-hero-slide'));
+      const dots   = Array.from(document.querySelectorAll('.about-hero-dot'));
+
+      if (!slides.length) return;
+
+      let current = 0;
+      const INTERVAL = 6000;
+      let timer = null;
+
+      function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('is-active'));
+        dots.forEach(dot => dot.classList.remove('is-active'));
+
+        current = index;
+        slides[current].classList.add('is-active');
+        dots[current].classList.add('is-active');
+      }
+
+      function nextSlide() {
+        const next = (current + 1) % slides.length;
+        showSlide(next);
+      }
+
+      function startTimer() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(nextSlide, INTERVAL);
+      }
+
+      // 초기 상태
+      showSlide(0);
+      startTimer();
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          showSlide(index);
+          startTimer();
+        });
+      });
+    });
+  </script>
 </body>
 </html>
