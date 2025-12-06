@@ -478,62 +478,94 @@ footer {
   padding: 32px 20px 80px;
 }
 
-/* ABOUT HERO (두 칼럼 구조) */
-.about-hero {
-  display: flex;
-  gap: 40px;
-  padding: 40px 0 56px;
-  align-items: flex-end;
-  margin-bottom: 56px;
-}
-
-.about-hero-image {
-  flex: 1.15;
-  background: #e6dfd8;
-  min-height: 260px;
+/* ===== ABOUT HERO SLIDER (풀브리드) ===== */
+.about-hero-slider {
+  position: relative;
+  width: 100vw;
+  height: 82vh;
+  margin-left: calc(-50vw + 50%);
+  margin-bottom: 72px;
   overflow: hidden;
+  background: #000;
 }
 
-.about-hero-image img {
+.about-hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.about-hero-slide.is-active {
+  opacity: 1;
+}
+
+.about-hero-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.about-hero-text {
-  flex: 1;
+/* 좌하단 텍스트 오버레이 */
+.about-hero-overlay {
+  position: absolute;
+  left: 80px;
+  bottom: 80px;
+  color: #f5f5f5;
+  max-width: 520px;
+}
+
+.about-hero-role {
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.about-hero-name {
+  font-size: 32px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.about-hero-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* 좌우 버튼 */
+.about-hero-prev,
+.about-hero-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0.28);
+  color: #fff;
+  font-size: 30px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.about-hero-prev { left: 24px; }
+.about-hero-next { right: 24px; }
+
+/* ===== ABOUT STORY 텍스트 ===== */
+.about-story {
+  max-width: 720px;
+  margin: 40px auto 60px;
   font-size: 14px;
 }
 
-.about-kicker {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-
-.about-hero-title {
-  font-size: 22px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-/* ABOUT BODY 텍스트 */
-.about-section {
-  margin-bottom: 56px;
-}
-
-.about-section-inner {
-  max-width: 720px;
-}
-
-.about-section-body p + p {
+.about-story p + p {
   margin-top: 12px;
 }
 
-/* 오른쪽 정렬된 Work Approach / What I Photograph */
+/* ===== 오른쪽 정렬 블록들 ===== */
 .about-columns-v2 {
   max-width: 900px;
   margin: 0 0 60px auto;
@@ -567,12 +599,30 @@ footer {
   color: var(--muted);
 }
 
-/* MOBILE */
+/* ===== MOBILE (ABOUT) ===== */
 @media (max-width: 640px) {
-  .about-hero {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
+  .about-hero-slider {
+    height: 60vh;
+  }
+
+  .about-hero-overlay {
+    left: 24px;
+    right: 24px;
+    bottom: 32px;
+    max-width: none;
+  }
+
+  .about-hero-name {
+    font-size: 24px;
+  }
+
+  .about-hero-desc {
+    font-size: 13px;
+  }
+
+  .about-story {
+    margin: 32px 0 48px;
+    padding: 0 4px;
   }
 
   .about-columns-v2 {
