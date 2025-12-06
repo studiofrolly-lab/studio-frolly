@@ -11,10 +11,11 @@
   <!-- HEADER -->
   <header>
     <div class="nav-inner">
-      <div class="logo">STUDIO FROLLY</div>
+      <div class="logo">
+        <a href="index.html">STUDIO FROLLY</a>
+      </div>
       <nav>
         <ul>
-          <li><a href="index.html" class="active">Studio Frolly</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -27,7 +28,9 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-title">STUDIO FROLLY</div>
-      <div class="hero-sub">Warm interior & lifestyle photography for small hotels and cozy spaces.</div>
+      <div class="hero-sub">
+        Warm interior &amp; lifestyle photography for small hotels and cozy spaces.
+      </div>
 
       <div class="subnav">
         <a href="#highlights">Highlights</a>
@@ -49,19 +52,13 @@
 
       <div class="grid">
         <div class="grid-item">
-          <a href="images/highlights/01.jpg" target="_blank">
-            <img src="images/highlights/01.jpg" alt="Highlight 01">
-          </a>
+          <img src="images/highlights/01.jpg" alt="Highlight 01">
         </div>
         <div class="grid-item">
-          <a href="images/highlights/02.jpg" target="_blank">
-            <img src="images/highlights/02.jpg" alt="Highlight 02">
-          </a>
+          <img src="images/highlights/02.jpg" alt="Highlight 02">
         </div>
         <div class="grid-item">
-          <a href="images/highlights/03.jpg" target="_blank">
-            <img src="images/highlights/03.jpg" alt="Highlight 03">
-          </a>
+          <img src="images/highlights/03.jpg" alt="Highlight 03">
         </div>
       </div>
     </section>
@@ -77,14 +74,10 @@
 
       <div class="grid">
         <div class="grid-item">
-          <a href="images/arrival/01.jpg" target="_blank">
-            <img src="images/arrival/01.jpg" alt="Arrival 01">
-          </a>
+          <img src="images/arrival/01.jpg" alt="Arrival 01">
         </div>
         <div class="grid-item">
-          <a href="images/arrival/02.jpg" target="_blank">
-            <img src="images/arrival/02.jpg" alt="Arrival 02">
-          </a>
+          <img src="images/arrival/02.jpg" alt="Arrival 02">
         </div>
       </div>
     </section>
@@ -100,14 +93,10 @@
 
       <div class="grid">
         <div class="grid-item">
-          <a href="images/stay/01.jpg" target="_blank">
-            <img src="images/stay/01.jpg" alt="Stay 01">
-          </a>
+          <img src="images/stay/01.jpg" alt="Stay 01">
         </div>
         <div class="grid-item">
-          <a href="images/stay/02.jpg" target="_blank">
-            <img src="images/stay/02.jpg" alt="Stay 02">
-          </a>
+          <img src="images/stay/02.jpg" alt="Stay 02">
         </div>
       </div>
     </section>
@@ -123,14 +112,10 @@
 
       <div class="grid">
         <div class="grid-item">
-          <a href="images/layers/01.jpg" target="_blank">
-            <img src="images/layers/01.jpg" alt="Layers 01">
-          </a>
+          <img src="images/layers/01.jpg" alt="Layers 01">
         </div>
         <div class="grid-item">
-          <a href="images/layers/02.jpg" target="_blank">
-            <img src="images/layers/02.jpg" alt="Layers 02">
-          </a>
+          <img src="images/layers/02.jpg" alt="Layers 02">
         </div>
       </div>
     </section>
@@ -146,24 +131,107 @@
 
       <div class="grid">
         <div class="grid-item">
-          <a href="images/moments/01.jpg" target="_blank">
-            <img src="images/moments/01.jpg" alt="Moments 01">
-          </a>
+          <img src="images/moments/01.jpg" alt="Moments 01">
         </div>
         <div class="grid-item">
-          <a href="images/moments/02.jpg" target="_blank">
-            <img src="images/moments/02.jpg" alt="Moments 02">
-          </a>
+          <img src="images/moments/02.jpg" alt="Moments 02">
         </div>
       </div>
     </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <span>© Studio Frolly</span>
-    <span>Warm interior & lifestyle photography</span>
+    <span>Warm interior &amp; lifestyle photography</span>
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" type="button" aria-label="Close">×</button>
+    <button class="lightbox-prev" type="button" aria-label="Previous">‹</button>
+    <img class="lightbox-image" src="" alt="">
+    <button class="lightbox-next" type="button" aria-label="Next">›</button>
+  </div>
+
+  <!-- LIGHTBOX SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const images = Array.from(document.querySelectorAll('.grid-item img'));
+      if (!images.length) return;
+
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = lightbox.querySelector('.lightbox-image');
+      const btnClose = lightbox.querySelector('.lightbox-close');
+      const btnPrev = lightbox.querySelector('.lightbox-prev');
+      const btnNext = lightbox.querySelector('.lightbox-next');
+
+      let currentIndex = 0;
+
+      function setImage() {
+        const img = images[currentIndex];
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt || '';
+      }
+
+      function openLightbox(index) {
+        currentIndex = index;
+        setImage();
+        lightbox.classList.add('is-open');
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+      }
+
+      function showPrev() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        setImage();
+      }
+
+      function showNext() {
+        currentIndex = (currentIndex + 1) % images.length;
+        setImage();
+      }
+
+      images.forEach((img, index) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLightbox(index);
+        });
+      });
+
+      btnClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeLightbox();
+      });
+
+      btnPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showPrev();
+      });
+
+      btnNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showNext();
+      });
+
+      lightbox.addEventListener('click', (e) => {
+        // 배경 클릭하면 닫힘 (이미지/버튼은 제외)
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'ArrowRight') showNext();
+      });
+    });
+  </script>
 </body>
 </html>
