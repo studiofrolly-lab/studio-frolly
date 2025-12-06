@@ -34,7 +34,8 @@ header {
   z-index: 10;
   backdrop-filter: blur(12px);
   background: rgba(247, 243, 239, 0.96);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .nav-inner {
@@ -137,10 +138,9 @@ section {
   transform: translate(-50%, -50%);
   text-align: center;
   color: #ffffff;
-  z-index: 3; /* 항상 슬라이드/오버레이 위 */
+  z-index: 3;
 }
 
-/* 🔥 히어로 텍스트: 무조건 밝게 보이게 !important */
 .home-hero-title,
 #heroTitle {
   font-size: 46px;
@@ -167,7 +167,7 @@ section {
   margin: 0 auto 28px auto;
 }
 
-/* 연도 & 카피라이트는 기존처럼 은은하게 */
+/* 연도 & 카피라이트 */
 .home-hero-year {
   font-size: 12px;
   letter-spacing: 0.2em;
@@ -285,7 +285,7 @@ section {
 }
 
 /* ============================= */
-/*      ABOUT / CONTACT 등       */
+/*      ABOUT / CONTACT 공통     */
 /* ============================= */
 
 .about-hero {
@@ -407,7 +407,11 @@ section {
   gap: 6px;
 }
 
-/* FOOTER */
+/* ============================= */
+/*            FOOTER             */
+/* ============================= */
+
+/* 기존 footer 태그 스타일은 남겨두되, 새 푸터는 .site-footer 사용 */
 footer {
   max-width: 1080px;
   margin: 0 auto;
@@ -418,7 +422,31 @@ footer {
   justify-content: space-between;
 }
 
-/* LIGHTBOX */
+/* 브랜드 스타일 푸터 */
+.site-footer {
+  background: #111;
+  color: #ccc;
+  padding: 60px 20px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.site-footer .footer-inner > div {
+  margin-bottom: 8px;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.site-footer .footer-inner > div:last-child {
+  margin-top: 12px;
+  opacity: 0.6;
+  letter-spacing: 0.12em;
+}
+
+/* ============================= */
+/*           LIGHTBOX            */
+/* ============================= */
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -468,6 +496,7 @@ footer {
 .lightbox-next {
   right: 26px;
 }
+
 /* ============================= */
 /*        ABOUT PAGE ONLY        */
 /* ============================= */
@@ -475,10 +504,10 @@ footer {
 .about-page main {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 32px 20px 80px;
+  padding: 0 20px 80px; /* 헤더 바로 아래부터 이미지 붙게 */
 }
 
-/* ===== ABOUT HERO SLIDER ===== */
+/* ABOUT HERO SLIDER */
 .about-hero-slider {
   position: relative;
   width: 100vw;
@@ -489,7 +518,7 @@ footer {
   background: #000;
 }
 
-/* 어두운 오버레이 (히어로 이미지 전체에) */
+/* 어두운 오버레이 */
 .about-hero-slider::after {
   content: "";
   position: absolute;
@@ -525,7 +554,7 @@ footer {
   bottom: 80px;
   color: #f5f5f5;
   max-width: 520px;
-  z-index: 3; /* 오버레이 위 */
+  z-index: 3;
 }
 
 .about-hero-role {
@@ -572,7 +601,7 @@ footer {
   background: #ffffff;
 }
 
-/* ===== STORY 텍스트 ===== */
+/* STORY 텍스트 */
 .about-story {
   max-width: 720px;
   margin: 40px auto 60px;
@@ -583,15 +612,14 @@ footer {
   margin-top: 12px;
 }
 
-/* ===== 오른쪽 정렬 블럭 ===== */
-/* ===== 오른쪽 정렬 블럭 (2열) ===== */
+/* 오른쪽 정렬 블럭 (2열) */
 .about-columns-v2 {
   max-width: 900px;
   margin: 0 0 60px auto;
   display: flex;
-  flex-direction: row;   /* 🔥 데스크탑에서 2컬럼 */
+  flex-direction: row;
   justify-content: flex-end;
-  gap: 80px;             /* 두 컬럼 사이 간격 */
+  gap: 80px;
 }
 
 .about-block {
@@ -610,7 +638,6 @@ footer {
   color: #555;
 }
 
-/* 리스트 정렬 맞추기 */
 .about-block ul {
   list-style: none;
   padding-left: 0;
@@ -623,9 +650,28 @@ footer {
   color: var(--muted);
 }
 
-
-/* ===== MOBILE (ABOUT) ===== */
+/* MOBILE */
 @media (max-width: 640px) {
+  .nav-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .home-hero-title,
+  #heroTitle {
+    font-size: 32px;
+  }
+
+  .home-hero-sub,
+  #heroSub {
+    font-size: 13px;
+  }
+
+  .home-hero-line {
+    height: 50px;
+  }
+
   .about-hero-slider {
     height: 60vh;
   }
@@ -653,7 +699,7 @@ footer {
   .about-columns-v2 {
     max-width: 100%;
     margin: 0 0 60px 0;
-    flex-direction: column;   /* 🔁 모바일에선 다시 세로 */
+    flex-direction: column;
     gap: 32px;
   }
 

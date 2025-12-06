@@ -24,11 +24,12 @@
   </header>
 
   <main>
+
     <!-- ========================= -->
     <!--      HERO SLIDER         -->
     <!-- ========================= -->
+    <!-- 이미지: images/about/hero-01.jpg, hero-02.jpg -->
     <section class="about-hero-slider">
-      <!-- 슬라이드들 -->
       <div class="about-hero-slide is-active">
         <img src="images/about/hero-01.jpg" alt="Studio Frolly photographer 01">
       </div>
@@ -36,7 +37,7 @@
         <img src="images/about/hero-02.jpg" alt="Studio Frolly photographer 02">
       </div>
 
-      <!-- 좌하단 텍스트 -->
+      <!-- 텍스트 오버레이 -->
       <div class="about-hero-overlay">
         <div class="about-hero-role">Interior &amp; Lifestyle Photographer</div>
         <div class="about-hero-name">STUDIO FROLLY</div>
@@ -47,9 +48,9 @@
       </div>
 
       <!-- 점 네비게이션 -->
-      <div class="about-hero-dots">
-        <button type="button" class="about-hero-dot is-active" aria-label="Slide 1"></button>
-        <button type="button" class="about-hero-dot" aria-label="Slide 2"></button>
+      <div class="about-hero-dots" aria-label="About hero images">
+        <button class="about-hero-dot is-active" type="button" aria-label="Hero 1"></button>
+        <button class="about-hero-dot" type="button" aria-label="Hero 2"></button>
       </div>
     </section>
 
@@ -103,29 +104,34 @@
 
   </main>
 
-  <footer>
-    <span>© Studio Frolly</span>
-    <span>Warm interior &amp; lifestyle photography</span>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>사업자 : 스튜디오 프롤리 664-02-03066 | 대표 : 강혜진</div>
+      <div>인스타그램 : @studio_frolly</div>
+      <div>이메일 : studio.frolly@gmail.com</div>
+      <div>© 2022–2025 STUDIO FROLLY. ALL RIGHTS RESERVED.</div>
+    </div>
   </footer>
 
-  <!-- ===== ABOUT 전용 슬라이더 JS ===== -->
+  <!-- ABOUT 전용 슬라이더 JS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const slides = document.querySelectorAll('.about-hero-slide');
-      const dots   = document.querySelectorAll('.about-hero-dot');
+      const slides = Array.from(document.querySelectorAll('.about-hero-slide'));
+      const dots   = Array.from(document.querySelectorAll('.about-hero-dot'));
 
       if (!slides.length) return;
 
       let current = 0;
+      const INTERVAL = 6000;
+      let timer = null;
 
       function showSlide(index) {
-        slides.forEach((slide, i) =>
-          slide.classList.toggle('is-active', i === index)
-        );
-        dots.forEach((dot, i) =>
-          dot.classList.toggle('is-active', i === index)
-        );
+        slides.forEach(slide => slide.classList.remove('is-active'));
+        dots.forEach(dot => dot.classList.remove('is-active'));
+
         current = index;
+        slides[current].classList.add('is-active');
+        dots[current].classList.add('is-active');
       }
 
       function nextSlide() {
@@ -133,18 +139,19 @@
         showSlide(next);
       }
 
-      // 첫 화면
+      function startTimer() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(nextSlide, INTERVAL);
+      }
+
+      // 초기 상태
       showSlide(0);
+      startTimer();
 
-      // 자동 재생
-      let timer = setInterval(nextSlide, 6000);
-
-      // 점 클릭 시 이동 + 타이머 리셋
       dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-          clearInterval(timer);
           showSlide(index);
-          timer = setInterval(nextSlide, 6000);
+          startTimer();
         });
       });
     });
