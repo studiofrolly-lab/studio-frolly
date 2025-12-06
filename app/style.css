@@ -543,14 +543,15 @@ section {
 /* 좌하단 텍스트 */
 .about-hero-overlay {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;   /* 🔥 왼쪽 → 중앙 정렬 */
+  left: 22%;              /* 화면 왼쪽 쪽으로 이동 */
+  top: 52%;               /* 세로는 살짝 아래 */
+  transform: translate(0, -50%);
+  text-align: left;       /* 왼쪽 정렬 */
   color: #f5f5f5;
   max-width: 520px;
   z-index: 3;
 }
+
 
 .about-hero-name {
   font-size: 40px;
