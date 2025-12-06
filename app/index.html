@@ -112,13 +112,13 @@
     <button class="lightbox-next" type="button" aria-label="Next">›</button>
   </div>
 
-  <!-- SCRIPT: 폴더 기준 자동 이미지 로드 + 라이트박스 -->
+  <!-- SCRIPT: 폴더 기준 자동 이미지 로드 + LOAD MORE + 라이트박스 -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 섹션 목록
       const sectionIds = ['highlights', 'arrival', 'stay', 'layers', 'moments'];
-      // 섹션당 최대 몇 장까지 시도할지 (01~50.jpg까지)
-      const MAX_PER_SECTION = 50;
+      const MAX_PER_SECTION = 50;      // 섹션당 최대 시도 개수 (01~50.jpg)
+      const INITIAL_VISIBLE = 4;       // 기본으로 보여줄 개수
+      const LOAD_MORE_STEP = 4;        // Load more 클릭 시 추가로 보여줄 개수
 
       // 섹션별 grid 안에 이미지 자동 생성
       sectionIds.forEach((sectionId) => {
@@ -134,7 +134,6 @@
           img.src = `images/${sectionId}/${num}.jpg`;
           img.alt = `${sectionId} ${num}`;
 
-          // 파일이 없으면 이 칸은 없애버리기
           img.onerror = () => {
             wrapper.remove();
           };
@@ -144,8 +143,59 @@
         }
       });
 
-      // 모든 이미지 로드가 끝난 뒤에 라이트박스 세팅
+      // 모든 이미지 로드 후, load more + 라이트박스 세팅
       window.addEventListener('load', () => {
+        const sectionState = {};
+
+        // 📌 섹션별 LOAD MORE 버튼 세팅
+        sectionIds.forEach((sectionId) => {
+          const sectionEl = document.getElementById(sectionId);
+          const grid = sectionEl.querySelector('.grid');
+          const items = Array.from(grid.querySelectorAll('.grid-item'));
+          const total = items.length;
+
+          if (total <= INITIAL_VISIBLE) return;
+
+          // 처음에는 INITIAL_VISIBLE 개만 보이게
+          items.forEach((item, idx) => {
+            if (idx >= INITIAL_VISIBLE) {
+              item.classList.add('is-hidden');
+            }
+          });
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'load-more';
+          btn.textContent = `LOAD MORE (${INITIAL_VISIBLE} / ${total})`;
+
+          sectionState[sectionId] = {
+            items,
+            total,
+            visible: INITIAL_VISIBLE,
+            btn
+          };
+
+          btn.addEventListener('click', () => {
+            const state = sectionState[sectionId];
+            const nextVisible = Math.min(state.visible + LOAD_MORE_STEP, state.total);
+
+            for (let i = state.visible; i < nextVisible; i++) {
+              state.items[i].classList.remove('is-hidden');
+            }
+
+            state.visible = nextVisible;
+
+            if (state.visible >= state.total) {
+              state.btn.remove();
+            } else {
+              state.btn.textContent = `LOAD MORE (${state.visible} / ${state.total})`;
+            }
+          });
+
+          sectionEl.appendChild(btn);
+        });
+
+        // 🔍 라이트박스 세팅 (숨겨져 있던 이미지도 포함)
         const images = Array.from(document.querySelectorAll('.grid-item img'));
         if (!images.length) return;
 
