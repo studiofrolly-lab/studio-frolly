@@ -207,6 +207,13 @@ section {
   color: rgba(255,255,255,0.97) !important;
   opacity: 1 !important;
 }
+.home-hero-sub-kr {
+  font-size: 13px;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  font-style: normal;
+}
 
 .home-hero-line {
   width: 1px;

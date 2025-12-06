@@ -31,53 +31,62 @@
     <!-- 히어로 이미지: images/index-hero/highlights.jpg 등 5장 -->
     <section class="home-hero-slider">
 
-      <!-- slide 1: Highlights -->
-      <div class="home-hero-slide is-active"
-           data-title="Highlights"
-           data-sub="Selected cuts that show the mood of Studio Frolly">
-        <img src="images/index-hero/highlights.jpg" alt="Highlights hero image">
-      </div>
+     <!-- slide 1: Highlights -->
+<div class="home-hero-slide is-active"
+     data-title="Highlights"
+     data-sub="Representative cuts that capture the essence of each space"
+     data-sub-kr="각 공간의 분위기를 가장 잘 보여주는 하이라이트 컷들">
+  <img src="images/index-hero/highlights.jpg" alt="Highlights hero image">
+</div>
 
-      <!-- slide 2: Arrival -->
-      <div class="home-hero-slide"
-           data-title="Arrival"
-           data-sub="Entrances, lobbies and the first impression of each stay">
-        <img src="images/index-hero/arrival.jpg" alt="Arrival hero image">
-      </div>
+<!-- slide 2: Arrival -->
+<div class="home-hero-slide"
+     data-title="Arrival"
+     data-sub="Entrances, lobbies, and the first impressions of each stay"
+     data-sub-kr="입구와 로비 등, 머무는 공간의 첫인상을 담은 장면들">
+  <img src="images/index-hero/arrival.jpg" alt="Arrival hero image">
+</div>
 
-      <!-- slide 3: Stay -->
-      <div class="home-hero-slide"
-           data-title="Stay"
-           data-sub="Rooms, light, and quiet corners to rest">
-        <img src="images/index-hero/stay.jpg" alt="Stay hero image">
-      </div>
+<!-- slide 3: Stay -->
+<div class="home-hero-slide"
+     data-title="Stay"
+     data-sub="Rooms, light, and quiet corners that shape the experience"
+     data-sub-kr="객실, 빛, 머물고 싶은 조용한 구석들을 담은 장면들">
+  <img src="images/index-hero/stay.jpg" alt="Stay hero image">
+</div>
 
-      <!-- slide 4: Layers -->
-      <div class="home-hero-slide"
-           data-title="Layers"
-           data-sub="Textures, materials and the small details that build a space">
-        <img src="images/index-hero/layers.jpg" alt="Layers hero image">
-      </div>
+<!-- slide 4: Layers -->
+<div class="home-hero-slide"
+     data-title="Layers"
+     data-sub="Textures, materials, and the subtle elements that build a space"
+     data-sub-kr="공간을 완성하는 재질, 소재, 디테일의 레이어들">
+  <img src="images/index-hero/layers.jpg" alt="Layers hero image">
+</div>
 
-      <!-- slide 5: Moments -->
-      <div class="home-hero-slide"
-           data-title="Moments"
-           data-sub="Lifestyle scenes that show how the space is lived">
-        <img src="images/index-hero/moments.jpg" alt="Moments hero image">
-      </div>
+<!-- slide 5: Moments -->
+<div class="home-hero-slide"
+     data-title="Moments"
+     data-sub="Lifestyle scenes capturing how the space is lived in"
+     data-sub-kr="공간 안에서의 생활을 보여주는 라이프스타일 장면들">
+  <img src="images/index-hero/moments.jpg" alt="Moments hero image">
+</div>
 
-      <!-- 텍스트 오버레이 -->
-      <div class="home-hero-overlay">
-        <div class="home-hero-title" id="heroTitle">STUDIO FROLLY</div>
-        <div class="home-hero-sub" id="heroSub">
-          Warm interior &amp; lifestyle photography for small hotels and cozy spaces.
-        </div>
 
-        <div class="home-hero-line"></div>
+     <!-- 텍스트 오버레이 -->
+<div class="home-hero-overlay">
+  <div class="home-hero-title" id="heroTitle">Highlights</div>
+  <div class="home-hero-sub" id="heroSub">
+    Representative cuts that capture the essence of each space
+  </div>
+  <div class="home-hero-sub-kr" id="heroSubKr">
+    각 공간의 분위기를 가장 잘 보여주는 하이라이트 컷들
+  </div>
 
-        <div class="home-hero-year">2022 – 2025</div>
-        <div class="home-hero-copy">© STUDIO FROLLY. ALL RIGHTS RESERVED.</div>
-      </div>
+  <div class="home-hero-line"></div>
+
+  <div class="home-hero-year">2022 – 2025</div>
+  <div class="home-hero-copy">© STUDIO FROLLY. ALL RIGHTS RESERVED.</div>
+</div>
 
       <!-- 점 네비게이션 -->
       <div class="home-hero-dots" aria-label="Hero images">
@@ -191,20 +200,23 @@
       /* -----------------------------------
          1) HOME HERO SLIDER (텍스트 연동)
       ----------------------------------- */
-      const slides = Array.from(document.querySelectorAll('.home-hero-slide'));
-      const dots   = Array.from(document.querySelectorAll('.home-hero-dot'));
-      const titleEl = document.getElementById('heroTitle');
-      const subEl   = document.getElementById('heroSub');
+const titleEl = document.getElementById('heroTitle');
+const subEl   = document.getElementById('heroSub');
+const subKrEl = document.getElementById('heroSubKr');
 
-      let current = 0;
-      const INTERVAL = 4200;
-      let heroTimer = null;
+function updateText(index) {
+  if (!slides[index]) return;
 
-      function updateText(index) {
-        if (!slides[index]) return;
-        if (titleEl) titleEl.textContent = slides[index].dataset.title || 'STUDIO FROLLY';
-        if (subEl)   subEl.textContent   = slides[index].dataset.sub   || 'Warm interior & lifestyle photography for small hotels and cozy spaces.';
-      }
+  const slide    = slides[index];
+  const title    = slide.dataset.title || 'STUDIO FROLLY';
+  const sub      = slide.dataset.sub   || '';
+  const subKr    = slide.dataset.subKr || '';
+
+  if (titleEl)  titleEl.textContent = title;
+  if (subEl)    subEl.textContent   = sub;
+  if (subKrEl)  subKrEl.textContent = subKr;
+}
+
 
       function showSlide(index) {
         if (!slides.length) return;
