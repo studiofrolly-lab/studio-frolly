@@ -130,15 +130,7 @@ section {
 }
 
 /* HOME – HERO TEXT (건드리지 않음) */
-.home-hero-overlay {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 65%;
-  text-align: center;
-  color: #ffffff;
-  z-index: 3;
-}
+.home-hero-overlay
 
 .home-hero-title,
 #heroTitle {
