@@ -47,6 +47,7 @@ header {
   align-items: center;
   font-size: 14px;
   white-space: nowrap; /* 줄바꿈 방지 */
+  flex-wrap: nowrap;
 }
 
 /* 상단 왼쪽 로고 */
@@ -62,6 +63,7 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 18px;
+  flex-wrap: nowrap; 
 }
 
 nav a {
