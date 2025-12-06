@@ -413,33 +413,42 @@ section {
 /*            FOOTER             */
 /* ============================= */
 
-/* FOOTER */
+/* ============================= */
+/*            FOOTER             */
+/* ============================= */
+
+/* 기본 footer 태그 – 다른 페이지에서 쓸 수도 있으니 최소값만 */
 footer {
+  font-size: 11px;
+}
+
+/* 브랜드 푸터 */
+.site-footer {
+  background: #111;
+  color: #d5d0c8;
+  padding: 52px 20px 40px;
+  margin-top: 80px;
+}
+
+.site-footer .footer-inner {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 24px 20px 40px;
-  font-size: 11px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  gap: 4px;
-  color: #444; /* 전체 텍스트 좀 더 진하게 */
+  line-height: 1.8;
 }
 
-/* 일반 정보 라인 (사업자 / 인스타 / 이메일) */
-.footer-line {
-  color: #444;
+.site-footer .footer-inner > div {
+  font-size: 12px;
 }
 
-/* 카피라이트만 살짝 다른 색 + 트래킹 */
-.footer-copy {
-  color: #a59c90;           /* 규진 사이트 느낌의 연한 브라운-그레이 톤 */
-  letter-spacing: 0.14em;
+.site-footer .footer-copy {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-top: 4px;
+  color: #9b9185;
 }
+
 
 
 /* ============================= */
@@ -710,4 +719,91 @@ footer {
 /* 인덱스 페이지에서 헤더와 히어로 사이 공백 제거 */
 body.index-page main {
   padding-top: 0 !important;
+}
+/* ============================= */
+/*          CONTACT PAGE         */
+/* ============================= */
+
+.contact-section {
+  max-width: 720px;
+  margin: 0 auto 80px;
+}
+
+.contact-card {
+  background: #f0e7dd;
+  border-radius: 18px;
+  padding: 32px 28px 28px;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.04);
+  font-size: 14px;
+}
+
+.contact-intro {
+  margin-bottom: 20px;
+}
+
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.contact-label {
+  min-width: 160px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6f665d;
+}
+
+.contact-value {
+  font-weight: 500;
+}
+
+.contact-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 18px 0 18px;
+}
+
+.contact-note-block {
+  font-size: 13px;
+}
+
+.contact-note-title {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.contact-note-list {
+  list-style: disc;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-footnote {
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* 모바일 대응 */
+@media (max-width: 640px) {
+  .contact-card {
+    padding: 24px 18px 22px;
+    border-radius: 14px;
+  }
+
+  .contact-label {
+    min-width: 0;
+    width: 100%;
+  }
 }
