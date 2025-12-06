@@ -808,8 +808,8 @@ body.index-page main {
 /* ============================= */
 @media (min-width: 641px) {
   .home-hero-overlay {
-    top: 62%;              /* 🔥 중앙보다 아래로 */
-    left: 50%;
+    top: 80%;              /* 🔥 중앙보다 아래로 */
+    left: 80%;
     transform: translate(-50%, -50%);
     text-align: center;     /* 중앙정렬 유지 */
     width: 90%;             /* 혹시 짤림 방지 */
