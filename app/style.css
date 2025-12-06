@@ -413,29 +413,28 @@ section {
 /*            FOOTER             */
 /* ============================= */
 
-footer {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 40px 20px 32px;
-  font-size: 11px;
-  line-height: 1.9;
-  color: #555;              /* 기본 텍스트 조금 더 진하게 */
-  text-align: center;       /* ✅ 전부 중앙 정렬 */
-  background: transparent;  /* 배경은 지금 사이트 색 유지 */
+.site-footer {
+  background: var(--bg); /* 사이트 전체 톤 유지 */
+  color: #9d948b;        /* 🔥 전체 텍스트 — Load More 정도의 옅은 톤 */
+  text-align: center;
+  padding: 60px 20px 40px;
+  margin-top: 80px;
+  font-size: 12px;
 }
 
-/* 각 줄은 한 줄씩 쌓이게 */
-footer span {
-  display: block;
+.site-footer .footer-inner > div {
+  margin-bottom: 6px;
+  opacity: 0.85;
 }
 
-/* 카피라이트 라인만 살짝 다른 톤 + 자간 */
-footer span:last-child {
-  margin-top: 6px;
-  color: var(--muted);         /* ⓒ 라인만 더 옅은 색 */
+/* 🔥 카피라이트 강조 색 */
+.site-footer .footer-inner .copyright {
+  margin-top: 12px;
+  color: #7d7268;    /* 조금 더 진한 포인트 톤 */
   letter-spacing: 0.12em;
-  text-transform: uppercase;
+  opacity: 1;
 }
+
 
 
 /* ============================= */
