@@ -584,18 +584,22 @@ footer {
 }
 
 /* ===== 오른쪽 정렬 블럭 ===== */
+/* ===== 오른쪽 정렬 블럭 (2열) ===== */
 .about-columns-v2 {
   max-width: 900px;
   margin: 0 0 60px auto;
   display: flex;
-  flex-direction: column;
-  gap: 40px;
+  flex-direction: row;   /* 🔥 데스크탑에서 2컬럼 */
+  justify-content: flex-end;
+  gap: 80px;             /* 두 컬럼 사이 간격 */
 }
 
 .about-block {
-  max-width: 430px;
-  align-self: flex-end;
+  max-width: 320px;
+  flex: 1;
+  align-self: flex-start;
   font-size: 13px;
+  text-align: left;
 }
 
 .about-block h2 {
@@ -606,7 +610,7 @@ footer {
   color: #555;
 }
 
-/* 🔧 여기서 열 맞추기: 왼쪽 패딩 없애서 Work / What 블록 텍스트 라인 정렬 */
+/* 리스트 정렬 맞추기 */
 .about-block ul {
   list-style: none;
   padding-left: 0;
@@ -618,6 +622,7 @@ footer {
   font-size: 13px;
   color: var(--muted);
 }
+
 
 /* ===== MOBILE (ABOUT) ===== */
 @media (max-width: 640px) {
@@ -648,6 +653,8 @@ footer {
   .about-columns-v2 {
     max-width: 100%;
     margin: 0 0 60px 0;
+    flex-direction: column;   /* 🔁 모바일에선 다시 세로 */
+    gap: 32px;
   }
 
   .about-block {
