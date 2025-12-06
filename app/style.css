@@ -1,105 +1,126 @@
-/* ABOUT PAGE HERO
-   ----------------------------- */
+/* ABOUT PAGE
+   --------------------------------- */
 
 .about-hero {
-  position: relative;
-  min-height: 70vh;
   max-width: 1200px;
-  margin: 0 auto 4rem;
-  border-radius: 0 0 24px 24px;
-  overflow: hidden;
+  margin: 3rem auto 4rem;
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
 }
 
-/* 실제 이미지는 background-image 로 깔기 */
 .about-hero-image {
+  flex: 0 0 420px;
+}
+
+.about-hero-image img {
   width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
+  display: block;
+  border-radius: 20px;
 }
 
-/* 첫 번째 히어로 이미지 (상단 풀사이즈) */
-.about-hero-image-01 {
-  background-image: url("images/about/hero-01.jpg");
-}
-
-/* 히어로 위에 올라가는 텍스트 박스 */
-.about-hero-overlay {
-  position: absolute;
-  left: 6%;
-  bottom: 12%;
-  max-width: 420px;
-  padding: 24px 28px;
-  border-radius: 16px;
-  background: rgba(249, 244, 238, 0.92); /* 사이트 기본 톤에 맞게 크림색 박스 */
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+.about-hero-text {
+  flex: 1;
+  max-width: 520px;
 }
 
 .about-kicker {
   font-size: 0.9rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   color: #999;
 }
 
 .about-hero-title {
-  font-size: 1.9rem;
+  font-size: 2rem;
   letter-spacing: 0.08em;
-  margin: 0 0 0.75rem;
+  margin: 0 0 1rem;
 }
 
-.about-hero-overlay p {
-  margin: 0 0 0.4rem;
+.about-hero-text p {
+  margin: 0 0 0.6rem;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+.about-section {
+  padding: 0 1.5rem 3rem;
+}
+
+.about-section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-section-body {
+  max-width: 680px;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+.about-section-body p + p {
+  margin-top: 0.8rem;
+}
+
+/* 두 컬럼 영역 */
+.about-columns .about-section-inner {
+  display: flex;
+  gap: 48px;
+}
+
+.about-column {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-subtitle {
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
   font-size: 0.96rem;
   line-height: 1.7;
   color: #555;
 }
 
-/* 두 번째 히어로 이미지 (중간에 한 장 크게) */
-.about-hero-secondary {
-  max-width: 1200px;
-  margin: 0 auto 4rem;
-  border-radius: 24px;
-  overflow: hidden;
+.about-list li + li {
+  margin-top: 0.4rem;
 }
 
-.about-hero-secondary .about-hero-image {
-  height: 360px;
-}
-
-/* 두 번째 이미지 소스 */
-.about-hero-image-02 {
-  background-image: url("images/about/hero-02.jpg");
-  background-position: center;
+.about-note {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #777;
 }
 
 /* 모바일 대응 */
 @media (max-width: 768px) {
   .about-hero {
-    min-height: 60vh;
-    margin-bottom: 3rem;
-    border-radius: 0 0 18px 18px;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 1.5rem;
+    margin: 2.5rem auto 3rem;
   }
 
-  .about-hero-overlay {
-    left: 7%;
-    right: 7%;
-    bottom: 10%;
-    max-width: none;
-    padding: 18px 20px;
+  .about-hero-image {
+    flex-basis: auto;
   }
 
-  .about-hero-title {
-    font-size: 1.5rem;
+  .about-columns .about-section-inner {
+    flex-direction: column;
+    gap: 32px;
   }
 
-  .about-hero-secondary {
-    margin: 0 1.5rem 3rem;
-    border-radius: 18px;
-  }
-
-  .about-hero-secondary .about-hero-image {
-    height: 260px;
+  .about-section {
+    padding: 0 1.5rem 2.5rem;
   }
 }
