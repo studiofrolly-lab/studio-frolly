@@ -478,7 +478,7 @@ footer {
   padding: 32px 20px 80px;
 }
 
-/* ===== ABOUT HERO SLIDER (풀브리드) ===== */
+/* ===== ABOUT HERO SLIDER ===== */
 .about-hero-slider {
   position: relative;
   width: 100vw;
@@ -489,11 +489,22 @@ footer {
   background: #000;
 }
 
+/* 어두운 오버레이 (히어로 이미지 전체에) */
+.about-hero-slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  z-index: 2;
+}
+
 .about-hero-slide {
   position: absolute;
   inset: 0;
   opacity: 0;
   transition: opacity 1s ease;
+  z-index: 1;
 }
 
 .about-hero-slide.is-active {
@@ -507,13 +518,14 @@ footer {
   display: block;
 }
 
-/* 좌하단 텍스트 오버레이 */
+/* 좌하단 텍스트 */
 .about-hero-overlay {
   position: absolute;
   left: 80px;
   bottom: 80px;
   color: #f5f5f5;
   max-width: 520px;
+  z-index: 3; /* 오버레이 위 */
 }
 
 .about-hero-role {
@@ -537,24 +549,30 @@ footer {
   opacity: 0.9;
 }
 
-/* 좌우 버튼 */
-.about-hero-prev,
-.about-hero-next {
+/* 점 네비게이션 */
+.about-hero-dots {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.about-hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   border: none;
-  background: rgba(0, 0, 0, 0.28);
-  color: #fff;
-  font-size: 30px;
-  padding: 6px 12px;
+  background: rgba(255,255,255,0.4);
   cursor: pointer;
 }
 
-.about-hero-prev { left: 24px; }
-.about-hero-next { right: 24px; }
+.about-hero-dot.is-active {
+  background: #ffffff;
+}
 
-/* ===== ABOUT STORY 텍스트 ===== */
+/* ===== STORY 텍스트 ===== */
 .about-story {
   max-width: 720px;
   margin: 40px auto 60px;
@@ -565,7 +583,7 @@ footer {
   margin-top: 12px;
 }
 
-/* ===== 오른쪽 정렬 블록들 ===== */
+/* ===== 오른쪽 정렬 블럭 ===== */
 .about-columns-v2 {
   max-width: 900px;
   margin: 0 0 60px auto;
@@ -588,8 +606,10 @@ footer {
   color: #555;
 }
 
+/* 🔧 여기서 열 맞추기: 왼쪽 패딩 없애서 Work / What 블록 텍스트 라인 정렬 */
 .about-block ul {
   list-style: none;
+  padding-left: 0;
   line-height: 1.7;
 }
 
