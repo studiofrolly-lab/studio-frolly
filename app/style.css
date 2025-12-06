@@ -797,3 +797,18 @@ body.index-page main {
   font-size: 13px;
   font-weight: 600;
 }
+/* INDEX – Korean + English Section descriptions */
+.section-desc {
+  font-size: 13px;
+  color: #9a8f85;        /* 어바웃 페이지 영어와 동일 색 */
+  font-style: italic;
+  font-family: "Georgia", "Times New Roman", serif;
+  margin-bottom: 6px;
+}
+
+.section-desc-kr {
+  font-size: 13px;
+  color: #6d6460;       /* 한국어는 조금 더 진하게 */
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  margin-top: 4px;
+}
