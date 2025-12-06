@@ -25,13 +25,46 @@
 
   <main>
 
-    <!-- HERO -->
+    <!-- HERO: 이미지 슬라이더 + 텍스트 오버레이 -->
     <section class="hero">
-      <div class="hero-title">STUDIO FROLLY</div>
-      <div class="hero-sub">
-        Warm interior &amp; lifestyle photography for small hotels and cozy spaces.
+      <div class="hero-slider">
+
+        <!-- 섹션별 히어로 이미지 -->
+        <div class="hero-slide is-active">
+          <img src="images/index-hero/highlights.jpg" alt="Highlights hero image">
+        </div>
+        <div class="hero-slide">
+          <img src="images/index-hero/arrival.jpg" alt="Arrival hero image">
+        </div>
+        <div class="hero-slide">
+          <img src="images/index-hero/stay.jpg" alt="Stay hero image">
+        </div>
+        <div class="hero-slide">
+          <img src="images/index-hero/layers.jpg" alt="Layers hero image">
+        </div>
+        <div class="hero-slide">
+          <img src="images/index-hero/moments.jpg" alt="Moments hero image">
+        </div>
+
+        <!-- 텍스트 오버레이 -->
+        <div class="hero-overlay">
+          <div class="hero-title">STUDIO FROLLY</div>
+          <div class="hero-sub">
+            Warm interior &amp; lifestyle photography for small hotels and cozy spaces.
+          </div>
+        </div>
+
+        <!-- 점 네비게이션 (규진 페이지 느낌) -->
+        <div class="hero-dots" aria-label="Hero images">
+          <button type="button" class="hero-dot is-active" aria-label="Highlights"></button>
+          <button type="button" class="hero-dot" aria-label="Arrival"></button>
+          <button type="button" class="hero-dot" aria-label="Stay"></button>
+          <button type="button" class="hero-dot" aria-label="Layers"></button>
+          <button type="button" class="hero-dot" aria-label="Moments"></button>
+        </div>
       </div>
 
+      <!-- 섹션 점프용 서브내비는 UX상 유용해서 일단 유지 -->
       <div class="subnav">
         <a href="#highlights">Highlights</a>
         <a href="#arrival">Arrival</a>
@@ -49,6 +82,7 @@
           <div class="section-desc">Selected cuts that show the mood of Studio Frolly</div>
         </div>
       </div>
+      <div class="section-divider"></div>
       <div class="grid"></div>
     </section>
 
@@ -60,6 +94,7 @@
           <div class="section-desc">Entrances, lobbies and the first impression of each stay</div>
         </div>
       </div>
+      <div class="section-divider"></div>
       <div class="grid"></div>
     </section>
 
@@ -71,6 +106,7 @@
           <div class="section-desc">Rooms, light, and quiet corners to rest</div>
         </div>
       </div>
+      <div class="section-divider"></div>
       <div class="grid"></div>
     </section>
 
@@ -82,6 +118,7 @@
           <div class="section-desc">Textures, materials and the small details that build a space</div>
         </div>
       </div>
+      <div class="section-divider"></div>
       <div class="grid"></div>
     </section>
 
@@ -93,6 +130,7 @@
           <div class="section-desc">Lifestyle scenes that show how the space is lived</div>
         </div>
       </div>
+      <div class="section-divider"></div>
       <div class="grid"></div>
     </section>
 
@@ -112,21 +150,58 @@
     <button class="lightbox-next" type="button" aria-label="Next">›</button>
   </div>
 
-  <!-- SCRIPT: 폴더 기준 자동 이미지 로드 + LOAD MORE + 라이트박스 -->
+  <!-- SCRIPT -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const sectionIds = ['highlights', 'arrival', 'stay', 'layers', 'moments'];
-      const MAX_PER_SECTION = 50;      // 섹션당 최대 시도 개수 (01~50.jpg)
-      const INITIAL_VISIBLE = 4;       // 기본으로 보여줄 개수
-      const LOAD_MORE_STEP = 4;        // Load more 클릭 시 추가로 보여줄 개수
+      /* ===== 1) HERO SLIDER ===== */
+      const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
+      const heroDots = Array.from(document.querySelectorAll('.hero-dot'));
+      let heroIndex = 0;
+      const HERO_INTERVAL = 7000; // 7초마다 전환
+      let heroTimer = null;
 
-      // 섹션별 grid 안에 이미지 자동 생성
+      function showHeroSlide(index) {
+        heroSlides.forEach((slide, i) => {
+          slide.classList.toggle('is-active', i === index);
+        });
+        heroDots.forEach((dot, i) => {
+          dot.classList.toggle('is-active', i === index);
+        });
+        heroIndex = index;
+      }
+
+      function nextHeroSlide() {
+        const nextIndex = (heroIndex + 1) % heroSlides.length;
+        showHeroSlide(nextIndex);
+      }
+
+      function startHeroTimer() {
+        if (heroTimer) clearInterval(heroTimer);
+        heroTimer = setInterval(nextHeroSlide, HERO_INTERVAL);
+      }
+
+      if (heroSlides.length && heroDots.length && heroSlides.length === heroDots.length) {
+        heroDots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            showHeroSlide(index);
+            startHeroTimer();
+          });
+        });
+        startHeroTimer();
+      }
+
+      /* ===== 2) 그리드 이미지 자동 로드 / LOAD MORE / 라이트박스 (기존 로직) ===== */
+      const sectionIds = ['highlights', 'arrival', 'stay', 'layers', 'moments'];
+      const MAX_PER_SECTION = 50;
+      const INITIAL_VISIBLE = 4;
+      const LOAD_MORE_STEP = 4;
+
       sectionIds.forEach((sectionId) => {
         const grid = document.querySelector('#' + sectionId + ' .grid');
         if (!grid) return;
 
         for (let i = 1; i <= MAX_PER_SECTION; i++) {
-          const num = String(i).padStart(2, '0'); // 1 -> "01"
+          const num = String(i).padStart(2, '0');
           const wrapper = document.createElement('div');
           wrapper.className = 'grid-item';
 
@@ -143,11 +218,9 @@
         }
       });
 
-      // 모든 이미지 로드 후, load more + 라이트박스 세팅
       window.addEventListener('load', () => {
         const sectionState = {};
 
-        // 📌 섹션별 LOAD MORE 버튼 세팅
         sectionIds.forEach((sectionId) => {
           const sectionEl = document.getElementById(sectionId);
           const grid = sectionEl.querySelector('.grid');
@@ -156,11 +229,8 @@
 
           if (total <= INITIAL_VISIBLE) return;
 
-          // 처음에는 INITIAL_VISIBLE 개만 보이게
           items.forEach((item, idx) => {
-            if (idx >= INITIAL_VISIBLE) {
-              item.classList.add('is-hidden');
-            }
+            if (idx >= INITIAL_VISIBLE) item.classList.add('is-hidden');
           });
 
           const btn = document.createElement('button');
@@ -195,7 +265,6 @@
           sectionEl.appendChild(btn);
         });
 
-        // 🔍 라이트박스 세팅 (숨겨져 있던 이미지도 포함)
         const images = Array.from(document.querySelectorAll('.grid-item img'));
         if (!images.length) return;
 
@@ -204,7 +273,6 @@
         const btnClose = lightbox.querySelector('.lightbox-close');
         const btnPrev = lightbox.querySelector('.lightbox-prev');
         const btnNext = lightbox.querySelector('.lightbox-next');
-
         let currentIndex = 0;
 
         function setImage() {
@@ -258,9 +326,7 @@
         });
 
         lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox) {
-            closeLightbox();
-          }
+          if (e.target === lightbox) closeLightbox();
         });
 
         document.addEventListener('keydown', (e) => {
