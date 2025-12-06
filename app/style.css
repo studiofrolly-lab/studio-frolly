@@ -770,14 +770,12 @@ footer {
     height: 50px;
   }
 }
-/* HERO 이미지 화이트 오버레이 (강하게) */
-.home-hero-slider::before {
+.home-hero-slider::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.45); /* 🔥 여기 숫자를 올리면 더 흐릿 → 0.50도 가능 */
+  background: rgba(0,0,0,0.45); /* ✨ 딱 예쁜 수치 */
   pointer-events: none;
-  z-index: 1;
 }
 
 /* 텍스트를 위로 */
@@ -787,7 +785,7 @@ footer {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #222;
+  color: #ffffff;
   z-index: 2;
 }
 
