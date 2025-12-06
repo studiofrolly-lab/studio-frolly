@@ -112,110 +112,113 @@
     <button class="lightbox-next" type="button" aria-label="Next">›</button>
   </div>
 
-  <!-- SCRIPT: 섹션별 이미지 자동 생성 + 라이트박스 -->
+  <!-- SCRIPT: 폴더 기준 자동 이미지 로드 + 라이트박스 -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // ✅ 여기 숫자 배열만 수정하면 갯수 무제한으로 늘릴 수 있음
-      const imagesBySection = {
-        highlights: ['01', '02', '03','04','05','06','07'],       // images/highlights/01.jpg, 02.jpg, 03.jpg ...
-        arrival:    ['01', '02'],             // images/arrival/01.jpg ...
-        stay:       ['01', '02'],
-        layers:     ['01', '02'],
-        moments:    ['01', '02']
-      };
+      // 섹션 목록
+      const sectionIds = ['highlights', 'arrival', 'stay', 'layers', 'moments'];
+      // 섹션당 최대 몇 장까지 시도할지 (01~50.jpg까지)
+      const MAX_PER_SECTION = 50;
 
-      // 섹션별로 grid 안에 이미지 DOM 자동 생성
-      Object.entries(imagesBySection).forEach(([sectionId, files]) => {
+      // 섹션별 grid 안에 이미지 자동 생성
+      sectionIds.forEach((sectionId) => {
         const grid = document.querySelector('#' + sectionId + ' .grid');
         if (!grid) return;
 
-        grid.innerHTML = '';
-
-        files.forEach((name) => {
+        for (let i = 1; i <= MAX_PER_SECTION; i++) {
+          const num = String(i).padStart(2, '0'); // 1 -> "01"
           const wrapper = document.createElement('div');
           wrapper.className = 'grid-item';
 
           const img = document.createElement('img');
-          img.src = `images/${sectionId}/${name}.jpg`;
-          img.alt = `${sectionId} ${name}`;
+          img.src = `images/${sectionId}/${num}.jpg`;
+          img.alt = `${sectionId} ${num}`;
+
+          // 파일이 없으면 이 칸은 없애버리기
+          img.onerror = () => {
+            wrapper.remove();
+          };
 
           wrapper.appendChild(img);
           grid.appendChild(wrapper);
-        });
-      });
-
-      // 🔍 라이트박스 세팅
-      const images = Array.from(document.querySelectorAll('.grid-item img'));
-      if (!images.length) return;
-
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImage = lightbox.querySelector('.lightbox-image');
-      const btnClose = lightbox.querySelector('.lightbox-close');
-      const btnPrev = lightbox.querySelector('.lightbox-prev');
-      const btnNext = lightbox.querySelector('.lightbox-next');
-
-      let currentIndex = 0;
-
-      function setImage() {
-        const img = images[currentIndex];
-        lightboxImage.src = img.src;
-        lightboxImage.alt = img.alt || '';
-      }
-
-      function openLightbox(index) {
-        currentIndex = index;
-        setImage();
-        lightbox.classList.add('is-open');
-      }
-
-      function closeLightbox() {
-        lightbox.classList.remove('is-open');
-      }
-
-      function showPrev() {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        setImage();
-      }
-
-      function showNext() {
-        currentIndex = (currentIndex + 1) % images.length;
-        setImage();
-      }
-
-      images.forEach((img, index) => {
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', (e) => {
-          e.preventDefault();
-          openLightbox(index);
-        });
-      });
-
-      btnClose.addEventListener('click', (e) => {
-        e.stopPropagation();
-        closeLightbox();
-      });
-
-      btnPrev.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showPrev();
-      });
-
-      btnNext.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showNext();
-      });
-
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-          closeLightbox();
         }
       });
 
-      document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('is-open')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') showPrev();
-        if (e.key === 'ArrowRight') showNext();
+      // 모든 이미지 로드가 끝난 뒤에 라이트박스 세팅
+      window.addEventListener('load', () => {
+        const images = Array.from(document.querySelectorAll('.grid-item img'));
+        if (!images.length) return;
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = lightbox.querySelector('.lightbox-image');
+        const btnClose = lightbox.querySelector('.lightbox-close');
+        const btnPrev = lightbox.querySelector('.lightbox-prev');
+        const btnNext = lightbox.querySelector('.lightbox-next');
+
+        let currentIndex = 0;
+
+        function setImage() {
+          const img = images[currentIndex];
+          if (!img) return;
+          lightboxImage.src = img.src;
+          lightboxImage.alt = img.alt || '';
+        }
+
+        function openLightbox(index) {
+          currentIndex = index;
+          setImage();
+          lightbox.classList.add('is-open');
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove('is-open');
+        }
+
+        function showPrev() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          setImage();
+        }
+
+        function showNext() {
+          currentIndex = (currentIndex + 1) % images.length;
+          setImage();
+        }
+
+        images.forEach((img, index) => {
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLightbox(index);
+          });
+        });
+
+        btnClose.addEventListener('click', (e) => {
+          e.stopPropagation();
+          closeLightbox();
+        });
+
+        btnPrev.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showPrev();
+        });
+
+        btnNext.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showNext();
+        });
+
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+            closeLightbox();
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (!lightbox.classList.contains('is-open')) return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') showPrev();
+          if (e.key === 'ArrowRight') showNext();
+        });
       });
     });
   </script>
