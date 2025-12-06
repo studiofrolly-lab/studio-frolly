@@ -413,51 +413,28 @@ section {
 /*            FOOTER             */
 /* ============================= */
 
-/* 공통 폰트 사이즈 */
 footer {
-  font-size: 11px;
-}
-
-/* 인덱스 / 어바웃용 라이트 푸터 */
-footer:not(.site-footer) {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 20px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
-  color: #555;              /* 전체 텍스트 살짝 더 진하게 */
+  padding: 40px 20px 32px;
+  font-size: 11px;
+  line-height: 1.9;
+  color: #555;              /* 기본 텍스트 조금 더 진하게 */
+  text-align: center;       /* ✅ 전부 중앙 정렬 */
+  background: transparent;  /* 배경은 지금 사이트 색 유지 */
 }
 
-/* 각 항목을 동일 비율 컬럼처럼 보이게 */
-footer:not(.site-footer) span {
-  flex: 1 1 0;
+/* 각 줄은 한 줄씩 쌓이게 */
+footer span {
+  display: block;
 }
 
-/* 왼쪽 / 가운데는 왼쪽 정렬 유지 */
-footer:not(.site-footer) span:nth-child(1),
-footer:not(.site-footer) span:nth-child(2) {
-  text-align: left;
-}
-
-/* 오른쪽 카피라이트만 살짝 옅은 컬러 + 오른쪽 정렬 */
-footer:not(.site-footer) span:nth-child(3) {
-  text-align: right;
-  color: var(--muted);
-}
-
-/* 모바일에서는 세 줄로 쌓이게 */
-@media (max-width: 640px) {
-  footer:not(.site-footer) {
-    flex-direction: column;
-    gap: 4px;
-  }
-  
-  footer:not(.site-footer) span {
-    flex: none;
-    text-align: left;
-  }
+/* 카피라이트 라인만 살짝 다른 톤 + 자간 */
+footer span:last-child {
+  margin-top: 6px;
+  color: var(--muted);         /* ⓒ 라인만 더 옅은 색 */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 
