@@ -135,13 +135,19 @@ section {
 
 .home-hero-overlay {
   position: absolute;
-  top: 50%;
+
+  /* 중앙 정렬 유지 */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+
+  /* top 위치만 조정해서 모바일처럼 아래로 */
+  top: 65%;
+
   text-align: center;
   color: #ffffff;
   z-index: 3;
 }
+
 
 .home-hero-title,
 #heroTitle {
