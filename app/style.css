@@ -195,6 +195,10 @@ section {
   border-radius: 50%;
   background: rgba(255,255,255,0.4);
   cursor: pointer;
+  /* 🔥 추가 */
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 .home-hero-dot.is-active {
   background: #ffffff;
@@ -265,6 +269,10 @@ section {
   letter-spacing: 0.18em;
   color: #c0b5aa;
   cursor: pointer;
+  /* 🔥 추가 */
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 .load-more:hover {
   color: #a69889;
@@ -364,6 +372,9 @@ section {
   border-radius: 50%;
   background: rgba(255,255,255,0.4);
   cursor: pointer;
+    border: none;
+  outline: none;
+  box-shadow: none;
 }
 .about-hero-dot.is-active {
   background: #ffffff;
