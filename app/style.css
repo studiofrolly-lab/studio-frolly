@@ -662,28 +662,46 @@ section {
     height: 50px;
   }
 
+ /* ===== MOBILE (ABOUT) ===== */
+@media (max-width: 640px) {
   .about-hero-slider {
     height: 60vh;
   }
 
+  /* 히어로 텍스트 가운데 정렬 + 화면 안에 꽉 들어오게 */
+ /* ===== MOBILE (ABOUT) ===== */
+@media (max-width: 640px) {
+  .about-hero-slider {
+    height: 60vh;
+  }
+
+  /* 🔧 다시 왼쪽 아래 정렬 + 화면 안에 꽉 */
   .about-hero-overlay {
     left: 24px;
-    right: 24px;
+    right: 24px;          /* → 오른쪽도 같이 잡아서 화면 밖으로 안 나가게 */
     bottom: 32px;
+    transform: none;      /* 중앙정렬 해제 */
     max-width: none;
+    text-align: left;
+  }
+
+  .about-hero-role {
+    font-size: 11px;
+    letter-spacing: 0.12em;
   }
 
   .about-hero-name {
     font-size: 24px;
+    letter-spacing: 0.14em;
   }
 
   .about-hero-desc {
     font-size: 13px;
+    line-height: 1.7;
   }
 
   .about-story {
-    margin: 32px 0 48px;
-    padding: 0 4px;
+    margin: 32px 20px 48px;
   }
 
   .about-columns-v2 {
@@ -698,6 +716,8 @@ section {
     align-self: stretch;
   }
 }
+
+
 /* 인덱스 페이지에서 헤더와 히어로 사이 공백 제거 */
 body.index-page main {
   padding-top: 0 !important;
