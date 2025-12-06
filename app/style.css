@@ -10,6 +10,16 @@
   padding: 0;
 }
 
+/* 전체 링크 스타일: 기본 파란색/밑줄 제거 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", sans-serif;
   background-color: var(--bg);
@@ -37,12 +47,15 @@ header {
   font-size: 14px;
 }
 
+/* 상단 왼쪽 STUDIO FROLLY 로고 */
 .logo {
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;         /* 살짝 줄여서 더 부드럽게 */
   text-transform: uppercase;
   font-size: 13px;
+  font-weight: 400;               /* 너무 두껍지 않게 */
 }
 
+/* 상단 오른쪽 메뉴 (Studio Frolly / About / Contact) */
 nav ul {
   list-style: none;
   display: flex;
@@ -51,7 +64,10 @@ nav ul {
 
 nav a {
   color: var(--muted);
-  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.13em;         /* 둥글둥글한 느낌으로 살짝만 벌림 */
+  text-transform: uppercase;
 }
 
 nav a.active,
@@ -77,10 +93,13 @@ section {
   text-transform: uppercase;
 }
 
+/* Warm interior & lifestyle ... */
 .hero-sub {
   margin-top: 10px;
   font-size: 13px;
-  color: var(--muted);
+  color: #8d8d8d;
+  font-weight: 300;
+  font-style: italic;   /* 섹션 부가설명(Selected ~)과 같은 느낌 */
 }
 
 .subnav {
@@ -94,6 +113,11 @@ section {
 .subnav a {
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--muted);
+}
+
+.subnav a:hover {
+  color: var(--text);
 }
 
 /* SECTION TITLES */
@@ -108,6 +132,7 @@ section {
   margin-bottom: 6px;
 }
 
+/* 각 항목 아래 설명 문구 (Selected~, Entrances~, …) */
 .section-desc {
   font-size: 13px;
   font-weight: 300;
@@ -125,7 +150,7 @@ section {
 
 .grid-item {
   overflow: hidden;
-  border-radius: 0;
+  border-radius: 0;        /* 각진 사진 */
   background: #e6dfd8;
 }
 
