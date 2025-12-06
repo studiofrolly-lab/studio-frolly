@@ -413,16 +413,23 @@ section {
 /*            FOOTER             */
 /* ============================= */
 
-/* ============================= */
-/*            FOOTER             */
-/* ============================= */
-
-/* 기본 footer 태그 – 다른 페이지에서 쓸 수도 있으니 최소값만 */
+/* ① 기본 footer – 인덱스 / 어바웃에서 쓰는 푸터 */
 footer {
   font-size: 11px;
 }
 
-/* 브랜드 푸터 */
+/* .site-footer가 아닌 일반 footer만 이전 레이아웃 유지 */
+footer:not(.site-footer) {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px 32px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* ② 검은 배경 브랜드 푸터 – Contact 전용 */
 .site-footer {
   background: #111;
   color: #d5d0c8;
@@ -448,7 +455,6 @@ footer {
   text-transform: uppercase;
   color: #9b9185;
 }
-
 
 
 /* ============================= */
