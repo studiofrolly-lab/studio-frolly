@@ -10,7 +10,7 @@
   padding: 0;
 }
 
-/* 링크 기본 스타일 */
+/* 링크 */
 a {
   color: inherit;
   text-decoration: none;
@@ -27,7 +27,9 @@ body {
   line-height: 1.6;
 }
 
-/* HEADER */
+/* ============================= */
+/*           HEADER              */
+/* ============================= */
 header {
   position: sticky;
   top: 0;
@@ -35,7 +37,6 @@ header {
   backdrop-filter: blur(12px);
   background: rgba(247, 243, 239, 0.96);
   border-bottom: none;
-  box-shadow: none;
 }
 
 .nav-inner {
@@ -46,11 +47,9 @@ header {
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
-  white-space: nowrap; /* 줄바꿈 방지 */
-  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
-/* 상단 왼쪽 로고 */
 .logo {
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -58,12 +57,10 @@ header {
   font-weight: 400;
 }
 
-/* 상단 메뉴 */
 nav ul {
   list-style: none;
   display: flex;
   gap: 18px;
-  flex-wrap: nowrap; 
 }
 
 nav a {
@@ -78,7 +75,10 @@ nav a:hover {
   color: var(--text);
 }
 
-/* MAIN LAYOUT */
+/* ============================= */
+/*             MAIN              */
+/* ============================= */
+
 main {
   max-width: 1080px;
   margin: 0 auto;
@@ -90,13 +90,13 @@ section {
 }
 
 /* ============================= */
-/*         HOME HERO SLIDER      */
+/*        HOME HERO SLIDER      */
 /* ============================= */
 
 .home-hero-slider {
   position: relative;
   width: 100vw;
-  height: 100vh; /* 풀스크린 */
+  height: 100vh;
   overflow: hidden;
   margin-left: calc(-50vw + 50%);
 }
@@ -129,25 +129,16 @@ section {
   z-index: 2;
 }
 
-/* ============================= */
-/*        HERO TEXT OVERLAY      */
-/* ============================= */
-
+/* HOME – HERO TEXT (건드리지 않음) */
 .home-hero-overlay {
   position: absolute;
-
-  /* 중앙 정렬 유지 */
   left: 50%;
   transform: translateX(-50%);
-
-  /* top 위치만 조정해서 모바일처럼 아래로 */
   top: 65%;
-
   text-align: center;
   color: #ffffff;
   z-index: 3;
 }
-
 
 .home-hero-title,
 #heroTitle {
@@ -167,7 +158,6 @@ section {
   opacity: 1 !important;
 }
 
-/* 가운데 vertical line */
 .home-hero-line {
   width: 1px;
   height: 70px;
@@ -175,11 +165,9 @@ section {
   margin: 0 auto 28px auto;
 }
 
-/* 연도 & 카피라이트 */
 .home-hero-year {
   font-size: 12px;
   letter-spacing: 0.2em;
-  margin-bottom: 6px;
   opacity: 0.75;
   color: rgba(255,255,255,0.75);
 }
@@ -205,10 +193,8 @@ section {
   height: 9px;
   border-radius: 50%;
   background: rgba(255,255,255,0.4);
-  border: none;
   cursor: pointer;
 }
-
 .home-hero-dot.is-active {
   background: #ffffff;
 }
@@ -230,13 +216,10 @@ section {
 
 .section-desc {
   font-size: 13px;
-  font-weight: 300;
   font-style: italic;
   color: #8d8d8d;
-  line-height: 1.55;
 }
 
-/* 섹션 제목 아래 구분선 */
 .section-divider {
   height: 1px;
   background: rgba(0, 0, 0, 0.08);
@@ -255,7 +238,6 @@ section {
 
 .grid-item {
   overflow: hidden;
-  border-radius: 0;
   background: #e6dfd8;
 }
 
@@ -270,153 +252,166 @@ section {
   transform: scale(1.03);
 }
 
-/* 숨겨진 그리드 아이템 (LOAD MORE 전까지) */
 .grid-item.is-hidden {
   display: none;
 }
 
-/* LOAD MORE 버튼 */
 .load-more {
   display: block;
   margin: 32px auto 0;
-  border: none;
   background: none;
   font-size: 12px;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: #c0b5aa;
   cursor: pointer;
 }
-
 .load-more:hover {
   color: #a69889;
 }
 
 /* ============================= */
-/*      ABOUT / CONTACT 공통     */
+/*        ABOUT PAGE ONLY        */
 /* ============================= */
 
-.about-hero {
-  display: flex;
-  gap: 40px;
-  padding: 40px 0 56px;
-  align-items: flex-end;
-  margin-bottom: 56px;
+.about-page main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
 }
 
-.about-hero-image {
-  flex: 1.15;
-  background: #e6dfd8;
-  min-height: 260px;
+/* HERO SLIDER */
+.about-hero-slider {
+  position: relative;
+  width: 100vw;
+  height: 82vh;
+  margin-left: calc(-50vw + 50%);
+  margin-bottom: 72px;
   overflow: hidden;
+  background: #000;
 }
 
-.about-hero-image img {
+.about-hero-slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.about-hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 1;
+}
+
+.about-hero-slide.is-active {
+  opacity: 1;
+}
+
+.about-hero-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-.about-hero-text {
-  flex: 1;
+/* ⭐⭐⭐ ABOUT HERO TEXT — 완전 정상화된 최종본 ⭐⭐⭐ */
+.about-hero-overlay {
+  position: absolute;
+  left: 24px;
+  bottom: 40px;
+  transform: none;
+  max-width: 520px;
+  text-align: left;
+  color: #f5f5f5;
+  z-index: 3;
+}
+
+.about-hero-role {
   font-size: 14px;
+  letter-spacing: 0.22em;
+  margin-bottom: 12px;
 }
 
-.about-kicker {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
+.about-hero-name {
+  font-size: 40px;
+  letter-spacing: 0.18em;
+  margin-bottom: 14px;
 }
 
-.about-hero-title {
-  font-size: 22px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+.about-hero-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.95;
 }
 
-.about-hero-text p + p {
-  margin-top: 8px;
-  color: var(--muted);
+/* 점 네비 */
+.about-hero-dots {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  gap: 8px;
+  z-index: 3;
 }
 
-.about-section {
-  margin-bottom: 56px;
+.about-hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+}
+.about-hero-dot.is-active {
+  background: #ffffff;
 }
 
-.about-section-inner {
+/* STORY */
+.about-story {
   max-width: 720px;
+  margin: 40px auto 60px;
   font-size: 14px;
 }
 
-.about-section-body p + p {
+.about-story p + p {
   margin-top: 12px;
 }
 
-.about-columns .about-section-inner {
-  max-width: none;
+/* RIGHT BLOCKS */
+.about-columns-v2 {
+  max-width: 900px;
+  margin-left: auto;
   display: flex;
-  gap: 40px;
-  align-items: flex-start;
+  gap: 80px;
 }
 
-.about-column {
-  flex: 1;
+.about-block {
+  max-width: 320px;
   font-size: 13px;
 }
 
-.about-subtitle {
+.about-block h2 {
   font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+  letter-spacing: 0.16em;
+  margin-bottom: 12px;
   color: #555;
 }
 
-.about-list {
+.about-block ul {
   list-style: none;
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.about-note {
-  margin-top: 20px;
-  font-size: 13px;
-  color: var(--muted);
   line-height: 1.7;
 }
 
-/* CONTACT PAGE */
-.page-title-block {
-  padding: 40px 0 32px;
-}
-
-.page-title {
-  font-size: 22px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.page-sub {
-  margin-top: 10px;
+.about-block-note {
+  margin-top: 16px;
   font-size: 13px;
   color: var(--muted);
 }
 
-.contact-list {
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
 /* ============================= */
-/*            FOOTER             */
+/*             FOOTER            */
 /* ============================= */
 
 .site-footer {
@@ -424,23 +419,20 @@ section {
   padding: 60px 20px;
   margin-top: 80px;
   text-align: center;
-  color: #8e8e8e; /* 전체 텍스트 은은하게 */
+  color: #8e8e8e;
 }
 
 .site-footer .footer-inner > div {
   margin-bottom: 8px;
   font-size: 12px;
-  opacity: 0.85;
 }
 
 .site-footer .footer-copy {
   margin-top: 14px;
-  color: #555; /* 카피라이트만 더 진하게 */
   font-weight: 500;
+  color: #555;
   letter-spacing: 0.1em;
 }
-
-
 
 /* ============================= */
 /*           LIGHTBOX            */
@@ -479,13 +471,11 @@ section {
   color: #f5f5f5;
   font-size: 28px;
   cursor: pointer;
-  padding: 8px 12px;
 }
 
 .lightbox-close {
   top: 20px;
   right: 26px;
-  font-size: 32px;
 }
 
 .lightbox-prev {
@@ -497,271 +487,38 @@ section {
 }
 
 /* ============================= */
-/*        ABOUT PAGE ONLY        */
-/* ============================= */
-
-.about-page main {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 20px 80px; /* 헤더 바로 아래부터 이미지 붙게 */
-}
-
-/* ABOUT HERO SLIDER */
-.about-hero-slider {
-  position: relative;
-  width: 100vw;
-  height: 82vh;
-  margin-left: calc(-50vw + 50%);
-  margin-bottom: 72px;
-  overflow: hidden;
-  background: #000;
-}
-
-/* 어두운 오버레이 */
-.about-hero-slider::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.about-hero-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 1s ease;
-  z-index: 1;
-}
-
-.about-hero-slide.is-active {
-  opacity: 1;
-}
-
-.about-hero-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 좌하단 텍스트 */
-.about-hero-overlay {
-  position: absolute;
-  left: 50%;        /* 중앙 */
-  top: 70%;         /* 아래로 내림 */
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #f5f5f5;
-  max-width: 520px;
-  z-index: 3;
-}
-
-
-
-.about-hero-name {
-  font-size: 40px;
-  letter-spacing: 0.18em;
-  margin-bottom: 14px;
-}
-
-.about-hero-role {
-  font-size: 14px;
-  letter-spacing: 0.22em;
-  margin-bottom: 12px;
-}
-
-.about-hero-desc {
-  font-size: 16px;
-  line-height: 1.6;
-  opacity: 0.95;
-}
-
-
-
-/* 점 네비게이션 */
-.about-hero-dots {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
-  display: flex;
-  gap: 8px;
-  z-index: 3;
-}
-
-.about-hero-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255,255,255,0.4);
-  cursor: pointer;
-}
-
-.about-hero-dot.is-active {
-  background: #ffffff;
-}
-
-/* STORY 텍스트 */
-.about-story {
-  max-width: 720px;
-  margin: 40px auto 60px;
-  font-size: 14px;
-}
-
-.about-story p + p {
-  margin-top: 12px;
-}
-
-/* 오른쪽 정렬 블럭 (2열) */
-.about-columns-v2 {
-  max-width: 900px;
-  margin: 0 0 60px auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  gap: 80px;
-}
-
-.about-block {
-  max-width: 320px;
-  flex: 1;
-  align-self: flex-start;
-  font-size: 13px;
-  text-align: left;
-}
-
-.about-block h2 {
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  color: #555;
-}
-
-.about-block ul {
-  list-style: none;
-  padding-left: 0;
-  line-height: 1.7;
-}
-
-.about-block-note {
-  margin-top: 16px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-/* MOBILE: HOME & ABOUT 공통 */
-@media (max-width: 640px) {
-
-  /* 홈 히어로 텍스트 줄이기 */
-  .home-hero-title,
-  #heroTitle {
-    font-size: 32px;
-  }
-
-  .home-hero-sub,
-  #heroSub {
-    font-size: 13px;
-  }
-
-  .home-hero-line {
-    height: 50px;
-  }
-
-  /* ABOUT: 히어로 영역 높이 */
-  .about-hero-slider {
-    height: 60vh;
-  }
-
-  /* ABOUT: 모바일에선 왼쪽 아래 정렬 + 화면 안에 꽉 */
-  .about-hero-overlay {
-    left: 24px;
-    right: 24px;
-    bottom: 32px;
-    top: auto;
-    transform: none;
-    max-width: none;
-    text-align: left;
-  }
-
-  .about-hero-role {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-  }
-
-  .about-hero-name {
-    font-size: 24px;
-    letter-spacing: 0.14em;
-  }
-
-  .about-hero-desc {
-    font-size: 13px;
-    line-height: 1.7;
-  }
-
-  .about-story {
-    margin: 32px 20px 48px;
-  }
-
-  .about-columns-v2 {
-    max-width: 100%;
-    margin: 0 0 60px 0;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .about-block {
-    max-width: 100%;
-    align-self: stretch;
-  }
-}
-
-/* 인덱스 페이지에서 헤더와 히어로 사이 공백 제거 */
-body.index-page main {
-  padding-top: 0 !important;
-}
-
-/* ============================= */
-/*          CONTACT PAGE         */
+/*            CONTACT            */
 /* ============================= */
 
 .contact-section {
   max-width: 720px;
-  margin: 0 auto 80px;
+  margin: 0 auto;
 }
 
 .contact-card {
   background: #f0e7dd;
   border-radius: 18px;
-  padding: 32px 28px 28px;
+  padding: 32px 28px;
   box-shadow: 0 8px 26px rgba(0, 0, 0, 0.04);
   font-size: 14px;
-}
-
-.contact-intro {
-  margin-bottom: 20px;
 }
 
 .contact-items {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
 }
 
 .contact-item {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 .contact-label {
   min-width: 160px;
   font-size: 12px;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: #6f665d;
 }
 
@@ -772,24 +529,12 @@ body.index-page main {
 .contact-divider {
   height: 1px;
   background: rgba(0, 0, 0, 0.08);
-  margin: 18px 0 18px;
-}
-
-.contact-note-block {
-  font-size: 13px;
-}
-
-.contact-note-title {
-  margin-bottom: 8px;
-  font-weight: 500;
+  margin: 18px 0;
 }
 
 .contact-note-list {
   list-style: disc;
   padding-left: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
 }
 
 .contact-footnote {
@@ -798,15 +543,50 @@ body.index-page main {
   color: var(--muted);
 }
 
-/* CONTACT 모바일 */
+/* ============================= */
+/*             MOBILE            */
+/* ============================= */
+
 @media (max-width: 640px) {
+  .home-hero-title, #heroTitle {
+    font-size: 32px;
+  }
+
+  .home-hero-sub, #heroSub {
+    font-size: 13px;
+  }
+
+  .about-hero-slider {
+    height: 60vh;
+  }
+
+  /* 모바일 어바웃 텍스트 유지 */
+  .about-hero-overlay {
+    left: 20px;
+    right: 20px;
+    bottom: 32px;
+    top: auto;
+    transform: none;
+    max-width: none;
+  }
+
+  .about-columns-v2 {
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
+  }
+
   .contact-card {
-    padding: 24px 18px 22px;
-    border-radius: 14px;
+    padding: 24px 18px;
   }
 
   .contact-label {
-    min-width: 0;
     width: 100%;
+    min-width: 0;
   }
+}
+
+/* 인덱스 페이지만 헤더 아래 여백 제거 */
+body.index-page main {
+  padding-top: 0 !important;
 }
