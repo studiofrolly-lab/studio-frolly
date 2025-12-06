@@ -10,16 +10,6 @@
   padding: 0;
 }
 
-/* 링크 기본 스타일 */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
 /* BODY */
 body {
   font-family: -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", sans-serif;
@@ -48,7 +38,6 @@ header {
   font-size: 14px;
 }
 
-/* 상단 왼쪽 로고 */
 .logo {
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -56,7 +45,6 @@ header {
   font-weight: 400;
 }
 
-/* 상단 메뉴 */
 nav ul {
   list-style: none;
   display: flex;
@@ -66,7 +54,6 @@ nav ul {
 nav a {
   color: var(--muted);
   font-size: 13px;
-  font-weight: 400;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -76,635 +63,21 @@ nav a:hover {
   color: var(--text);
 }
 
-/* MAIN LAYOUT */
+/* MAIN */
 main {
   max-width: 1080px;
   margin: 0 auto;
   padding: 32px 20px 80px;
 }
 
-section {
-  margin-bottom: 72px;
-}
-
 /* ============================= */
-/*           INDEX HERO          */
-/* ============================= */
-
-/* 인덱스 상단 전체 섹션 */
-.hero {
-  margin-bottom: 40px;
-}
-
-/* 이미지 슬라이더 래퍼 */
-.hero-slider {
-  position: relative;
-  width: 100%;
-  height: 360px;
-  overflow: hidden;
-  background: #d7cfc6;
-}
-
-/* 개별 슬라이드 */
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.7s ease;
-}
-
-.hero-slide.is-active {
-  opacity: 1;
-}
-
-.hero-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 텍스트 오버레이 */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  padding: 40px 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  max-width: 560px;
-  background: linear-gradient(
-    120deg,
-    rgba(0, 0, 0, 0.46) 0%,
-    rgba(0, 0, 0, 0.22) 45%,
-    rgba(0, 0, 0, 0.05) 100%
-  );
-  color: #fff;
-}
-
-/* HERO (INDEX) 텍스트 */
-.hero-title {
-  font-size: 28px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.hero-sub {
-  margin-top: 10px;
-  font-size: 13px;
-  color: #8d8d8d;
-  font-weight: 300;
-  font-style: italic;
-}
-
-/* 오버레이 안에서 색/톤만 살짝 바꿔줌 */
-.hero-overlay .hero-title {
-  color: #fff;
-}
-
-.hero-overlay .hero-sub {
-  color: rgba(255, 255, 255, 0.82);
-}
-
-/* HERO 하단 섹션 점프용 서브네비 */
-.subnav {
-  margin-top: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  font-size: 12px;
-}
-
-.subnav a {
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.subnav a:hover {
-  color: var(--text);
-}
-
-/* 슬라이더 점 네비게이션 (규진 사이트 느낌) */
-.hero-dots {
-  position: absolute;
-  right: 26px;
-  bottom: 22px;
-  display: flex;
-  gap: 8px;
-}
-
-.hero-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  border: none;
-  background: rgba(255, 255, 255, 0.4);
-  padding: 0;
-  cursor: pointer;
-}
-
-.hero-dot.is-active {
-  background: #ffffff;
-}
-
-/* SECTION HEADERS (INDEX) */
-.section-header {
-  margin-bottom: 28px;
-}
-
-.section-title {
-  font-size: 14px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.section-desc {
-  font-size: 13px;
-  font-weight: 300;
-  font-style: italic;
-  color: #8d8d8d;
-  line-height: 1.55;
-}
-
-/* 섹션 제목 아래 구분선 */
-.section-divider {
-  height: 1px;
-  background: rgba(0, 0, 0, 0.08);
-  margin: 18px 0 26px;
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  gap: 18px;
-
-  /* 기본: 태블릿/노트북 정도에서 2열 */
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-/* 넓은 화면(데스크탑)에서는 3열 */
-@media (min-width: 1040px) {
-  .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-
-
-.grid-item {
-  overflow: hidden;
-  border-radius: 0;
-  background: #e6dfd8;
-  aspect-ratio: 4 / 5;
-}
-
-.grid-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-.grid-item:hover img {
-  transform: scale(1.03);
-}
-
-/* 숨겨진 그리드 아이템 (LOAD MORE 전까지) */
-.grid-item.is-hidden {
-  display: none;
-}
-
-/* LOAD MORE 버튼 */
-.load-more {
-  display: block;
-  margin: 32px auto 0;
-  border: none;
-  background: none;
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #c0b5aa;
-  cursor: pointer;
-}
-
-.load-more:hover {
-  color: #a69889;
-}
-
-/* ABOUT PAGE - HERO (기존) */
-.about-hero {
-  display: flex;
-  gap: 40px;
-  padding: 40px 0 56px;
-  align-items: flex-end;
-  margin-bottom: 56px;
-}
-
-.about-hero-image {
-  flex: 1.15;
-  background: #e6dfd8;
-  min-height: 260px;
-  overflow: hidden;
-}
-
-.about-hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.about-hero-text {
-  flex: 1;
-  font-size: 14px;
-}
-
-.about-kicker {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-
-.about-hero-title {
-  font-size: 22px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-.about-hero-text p + p {
-  margin-top: 8px;
-  color: var(--muted);
-}
-
-/* ABOUT PAGE - BODY */
-.about-section {
-  margin-bottom: 56px;
-}
-
-.about-section-inner {
-  max-width: 720px;
-  font-size: 14px;
-}
-
-.about-section-body p + p {
-  margin-top: 12px;
-}
-
-/* ABOUT PAGE - COLUMNS (Work Approach / What I Photograph) */
-.about-columns .about-section-inner {
-  max-width: none;
-  display: flex;
-  gap: 40px;
-  align-items: flex-start;
-}
-
-.about-column {
-  flex: 1;
-  font-size: 13px;
-}
-
-.about-subtitle {
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  color: #555;
-}
-
-.about-list {
-  list-style: none;
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.about-note {
-  margin-top: 20px;
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-/* (이전 About용 기본 텍스트 스타일 - 필요시 다른 페이지에서 재사용 가능) */
-.page-title-block {
-  padding: 40px 0 32px;
-}
-
-.page-title {
-  font-size: 22px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.page-sub {
-  margin-top: 10px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.about-text {
-  max-width: 720px;
-  font-size: 14px;
-}
-
-.about-text p + p {
-  margin-top: 12px;
-}
-
-/* CONTACT PAGE */
-.contact-list {
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-/* FOOTER */
-footer {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 20px 32px;
-  font-size: 11px;
-  color: var(--muted);
-  display: flex;
-  justify-content: space-between;
-}
-
-/* LIGHTBOX */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.86);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease;
-  z-index: 100;
-}
-
-.lightbox.is-open {
-  opacity: 1;
-  visibility: visible;
-}
-
-.lightbox-image {
-  max-width: 90vw;
-  max-height: 90vh;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-}
-
-/* 라이트박스 버튼들 */
-.lightbox-close,
-.lightbox-prev,
-.lightbox-next {
-  position: absolute;
-  background: none;
-  border: none;
-  color: #f5f5f5;
-  font-size: 28px;
-  cursor: pointer;
-  padding: 8px 12px;
-}
-
-.lightbox-close {
-  top: 20px;
-  right: 26px;
-  font-size: 32px;
-}
-
-.lightbox-prev {
-  left: 26px;
-}
-
-.lightbox-next {
-  right: 26px;
-}
-
-/* MOBILE (공통) */
-@media (max-width: 640px) {
-  .nav-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  /* 인덱스 히어로 높이/텍스트 조정 */
-  .hero-slider {
-    height: 260px;
-  }
-
-  .hero-overlay {
-    padding: 24px 20px;
-  }
-
-  .hero-overlay .hero-title {
-    font-size: 22px;
-  }
-
-  .hero-overlay .hero-sub {
-    font-size: 12px;
-  }
-
-  .hero-dots {
-    right: 18px;
-    bottom: 14px;
-  }
-
-  .about-hero {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    padding: 24px 0 40px;
-  }
-
-  .about-columns .about-section-inner {
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .lightbox-prev {
-    left: 10px;
-  }
-
-  .lightbox-next {
-    right: 10px;
-  }
-}
-
-/* ============================= */
-/*     ABOUT PAGE – HERO SLIDER  */
-/* ============================= */
-
-.about-page main {
-  /* About 페이지만 살짝 여백 조정 (홈에는 영향 X) */
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 20px 80px;
-}
-
-/* 풀 브리드 느낌 주려고 width:100vw 사용 */
-.about-hero-slider {
-  position: relative;
-  width: 100vw;
-  height: 82vh;
-  margin-left: calc(-50vw + 50%);
-  margin-bottom: 72px;
-  overflow: hidden;
-  background: #000;
-}
-
-.about-hero-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.about-hero-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.about-hero-slide.is-active {
-  opacity: 1;
-}
-
-/* 텍스트 오버레이 (좌하단) */
-.about-hero-overlay {
-  position: absolute;
-  left: 80px;
-  bottom: 80px;
-  color: #f5f5f5;
-}
-
-.about-hero-role {
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  opacity: 0.9;
-}
-
-.about-hero-name {
-  font-size: 40px;
-  letter-spacing: 0.08em;
-  margin-bottom: 14px;
-}
-
-.about-hero-desc {
-  font-size: 15px;
-  line-height: 1.7;
-  opacity: 0.9;
-}
-
-/* 좌우 버튼 */
-.about-hero-prev,
-.about-hero-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: rgba(0, 0, 0, 0.28);
-  color: #fff;
-  font-size: 32px;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-.about-hero-prev { left: 24px; }
-.about-hero-next { right: 24px; }
-
-/* ============================= */
-/*      ABOUT STORY & BLOCKS     */
-/* ============================= */
-
-.about-story {
-  max-width: 720px;
-  margin: 80px auto 60px;
-  font-size: 14px;
-}
-
-.about-story p + p {
-  margin-top: 12px;
-}
-
-/* 오른쪽으로 붙는 세로 블럭들 */
-.about-columns-v2 {
-  max-width: 900px;
-  margin: 0 0 60px auto; /* 오른쪽 정렬 */
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.about-block {
-  max-width: 430px;
-  align-self: flex-end;
-  font-size: 13px;
-}
-
-.about-block h2 {
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  color: #555;
-}
-
-.about-block ul {
-  list-style: none;
-  padding-left: 0;
-  line-height: 1.7;
-}
-
-.about-block-note {
-  margin-top: 16px;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-/* ABOUT 전용 모바일 대응 */
-@media (max-width: 640px) {
-  .about-hero-slider {
-    height: 60vh;
-  }
-
-  .about-hero-overlay {
-    left: 24px;
-    bottom: 40px;
-  }
-
-  .about-hero-name {
-    font-size: 28px;
-  }
-
-  .about-columns-v2 {
-    max-width: 100%;
-    margin: 0 0 60px 0;
-  }
-
-  .about-block {
-    max-width: 100%;
-    align-self: stretch;
-  }
-}
-/* ============================= */
-/*         HOME HERO SLIDER      */
+/*       HOME HERO SLIDER        */
 /* ============================= */
 
 .home-hero-slider {
   position: relative;
   width: 100vw;
-  height: 100vh; /* 🔥 풀스크린 */
+  height: 100vh;
   overflow: hidden;
   margin-left: calc(-50vw + 50%);
 }
@@ -725,7 +98,8 @@ footer {
   height: 100%;
   object-fit: cover;
 }
-/* 🔥 여기 삽입 */
+
+/* 🔥 DARK OVERLAY FOR HERO */
 .home-hero-slider::after {
   content: "";
   position: absolute;
@@ -734,7 +108,7 @@ footer {
   pointer-events: none;
 }
 
-/* 중앙 텍스트 */
+/* HERO TEXT */
 .home-hero-overlay {
   position: absolute;
   top: 50%;
@@ -752,61 +126,85 @@ footer {
 }
 
 .home-hero-sub {
-  font-size: 15px;
+  font-size: 14px;
   opacity: 0.9;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
-/* 가운데 vertical line */
 .home-hero-line {
   width: 1px;
   height: 70px;
   background: rgba(255,255,255,0.7);
-  margin: 0 auto 28px auto;
+  margin: 0 auto 24px auto;
 }
 
+/* 🔥 COPYRIGHT 더 작게 */
 .home-hero-year {
   font-size: 12px;
-  letter-spacing: 0.22em;
-  margin-bottom: 4px;
-  opacity: 0.75;
+  opacity: 0.7;
 }
 
 .home-hero-copy {
-  font-size: 11px;
+  font-size: 10px;
   opacity: 0.55;
-  letter-spacing: 0.16em;
+  margin-top: 4px;
 }
 
-/* 모바일 */
-@media (max-width: 640px) {
-  .home-hero-title {
-    font-size: 32px;
-  }
-  .home-hero-sub {
-    font-size: 13px;
-  }
-  .home-hero-line {
-    height: 50px;
-  }
-}
-.home-hero-slider::after {
-  content: "";
+/* DOT NAVI */
+.home-hero-dots {
   position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45); /* ✨ 딱 예쁜 수치 */
-  pointer-events: none;
+  bottom: 42px;
+  right: 40px;
+  display: flex;
+  gap: 10px;
+  z-index: 20;
 }
 
-/* 텍스트를 위로 */
-.home-hero-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #ffffff;
-  z-index: 2;
+.home-hero-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  border: none;
+  cursor: pointer;
 }
 
+.home-hero-dot.is-active {
+  background: #fff;
+}
 
+/* ============================= */
+/*        SECTION GRID ETC       */
+/* ============================= */
+
+.section-header { margin-bottom: 28px; }
+
+.section-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 18px 0 26px;
+}
+
+/* 그리드는 기존 그대로 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* FOOTER */
+footer {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px 32px;
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+}

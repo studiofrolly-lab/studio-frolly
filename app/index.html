@@ -25,37 +25,57 @@
 
   <main>
 
- <!-- FULLSCREEN HERO SLIDER -->
-<section class="home-hero-slider">
+    <!-- =============================== -->
+    <!--     FULLSCREEN HERO SLIDER      -->
+    <!-- =============================== -->
 
-  <!-- slide 1 -->
-  <div class="home-hero-slide is-active">
-    <img src="images/hero/01.jpg" alt="Studio Frolly Hero Image 01">
-  </div>
+    <section class="home-hero-slider">
 
-  <!-- slide 2 -->
-  <div class="home-hero-slide">
-    <img src="images/hero/02.jpg" alt="Studio Frolly Hero Image 02">
-  </div>
+      <!-- slide 1 -->
+      <div class="home-hero-slide is-active"
+           data-title="Highlights"
+           data-sub="Selected mood cuts">
+        <img src="images/hero/01.jpg" alt="Highlights hero image">
+      </div>
 
-  <!-- slide 3 -->
-  <div class="home-hero-slide">
-    <img src="images/hero/03.jpg" alt="Studio Frolly Hero Image 03">
-  </div>
+      <!-- slide 2 -->
+      <div class="home-hero-slide"
+           data-title="Arrival"
+           data-sub="First impressions of each stay">
+        <img src="images/hero/02.jpg" alt="Arrival hero image">
+      </div>
 
-  <!-- CENTER TEXT -->
-  <div class="home-hero-overlay">
-    <div class="home-hero-title">STUDIO FROLLY</div>
-    <div class="home-hero-sub">Warm interior &amp; lifestyle photography</div>
+      <!-- slide 3 -->
+      <div class="home-hero-slide"
+           data-title="Stay"
+           data-sub="Rooms & quiet corners to rest">
+        <img src="images/hero/03.jpg" alt="Stay hero image">
+      </div>
 
-    <div class="home-hero-line"></div>
+      <!-- TEXT OVERLAY -->
+      <div class="home-hero-overlay">
+        <div class="home-hero-title" id="heroTitle">Highlights</div>
+        <div class="home-hero-sub" id="heroSub">Selected mood cuts</div>
 
-    <div class="home-hero-year">2022 – 2025</div>
-    <div class="home-hero-copy">© STUDIO FROLLY. ALL RIGHTS RESERVED.</div>
-  </div>
+        <div class="home-hero-line"></div>
 
-</section>
+        <div class="home-hero-year">2022 – 2025</div>
+        <div class="home-hero-copy">© STUDIO FROLLY. ALL RIGHTS RESERVED.</div>
+      </div>
 
+      <!-- DOT NAVIGATION -->
+      <div class="home-hero-dots">
+        <button class="home-hero-dot is-active"></button>
+        <button class="home-hero-dot"></button>
+        <button class="home-hero-dot"></button>
+      </div>
+
+    </section>
+
+
+    <!-- =============================== -->
+    <!--   GRID SECTIONS (기존 동일)     -->
+    <!-- =============================== -->
 
     <!-- HIGHLIGHTS -->
     <section id="highlights">
@@ -127,53 +147,65 @@
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" type="button" aria-label="Close">×</button>
-    <button class="lightbox-prev" type="button" aria-label="Previous">‹</button>
+    <button class="lightbox-close" type="button">×</button>
+    <button class="lightbox-prev" type="button">‹</button>
     <img class="lightbox-image" src="" alt="">
-    <button class="lightbox-next" type="button" aria-label="Next">›</button>
+    <button class="lightbox-next" type="button">›</button>
   </div>
 
-  <!-- SCRIPT -->
+  <!-- =============================== -->
+  <!--              SCRIPT             -->
+  <!-- =============================== -->
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      /* ===== 1) HERO SLIDER ===== */
-      const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
-      const heroDots = Array.from(document.querySelectorAll('.hero-dot'));
-      let heroIndex = 0;
-      const HERO_INTERVAL = 7000; // 7초마다 전환
-      let heroTimer = null;
 
-      function showHeroSlide(index) {
-        heroSlides.forEach((slide, i) => {
-          slide.classList.toggle('is-active', i === index);
-        });
-        heroDots.forEach((dot, i) => {
-          dot.classList.toggle('is-active', i === index);
-        });
-        heroIndex = index;
+      /* ---------------------------
+          1) HERO SLIDER TEXT UPDATE
+      --------------------------- */
+      const slides = document.querySelectorAll('.home-hero-slide');
+      const dots = document.querySelectorAll('.home-hero-dot');
+
+      const titleEl = document.getElementById('heroTitle');
+      const subEl = document.getElementById('heroSub');
+
+      let current = 0;
+
+      function updateText(index) {
+        const slide = slides[index];
+        titleEl.textContent = slide.dataset.title;
+        subEl.textContent = slide.dataset.sub;
       }
 
-      function nextHeroSlide() {
-        const nextIndex = (heroIndex + 1) % heroSlides.length;
-        showHeroSlide(nextIndex);
+      function showSlide(index) {
+        slides[current].classList.remove('is-active');
+        dots[current].classList.remove('is-active');
+
+        current = index;
+
+        slides[current].classList.add('is-active');
+        dots[current].classList.add('is-active');
+
+        updateText(current);
       }
 
-      function startHeroTimer() {
-        if (heroTimer) clearInterval(heroTimer);
-        heroTimer = setInterval(nextHeroSlide, HERO_INTERVAL);
+      function nextSlide() {
+        const next = (current + 1) % slides.length;
+        showSlide(next);
       }
 
-      if (heroSlides.length && heroDots.length && heroSlides.length === heroDots.length) {
-        heroDots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            showHeroSlide(index);
-            startHeroTimer();
-          });
-        });
-        startHeroTimer();
-      }
+      updateText(0);
+      setInterval(nextSlide, 4200);
 
-      /* ===== 2) 그리드 이미지 자동 로드 / LOAD MORE / 라이트박스 (기존 로직) ===== */
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+      });
+
+
+
+      /* ---------------------------
+          2) GRID AUTO-LOAD (기존)
+      --------------------------- */
       const sectionIds = ['highlights', 'arrival', 'stay', 'layers', 'moments'];
       const MAX_PER_SECTION = 50;
       const INITIAL_VISIBLE = 4;
@@ -192,148 +224,14 @@
           img.src = `images/${sectionId}/${num}.jpg`;
           img.alt = `${sectionId} ${num}`;
 
-          img.onerror = () => {
-            wrapper.remove();
-          };
-
+          img.onerror = () => wrapper.remove();
           wrapper.appendChild(img);
           grid.appendChild(wrapper);
         }
       });
 
-      window.addEventListener('load', () => {
-        const sectionState = {};
-
-        sectionIds.forEach((sectionId) => {
-          const sectionEl = document.getElementById(sectionId);
-          const grid = sectionEl.querySelector('.grid');
-          const items = Array.from(grid.querySelectorAll('.grid-item'));
-          const total = items.length;
-
-          if (total <= INITIAL_VISIBLE) return;
-
-          items.forEach((item, idx) => {
-            if (idx >= INITIAL_VISIBLE) item.classList.add('is-hidden');
-          });
-
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'load-more';
-          btn.textContent = `LOAD MORE (${INITIAL_VISIBLE} / ${total})`;
-
-          sectionState[sectionId] = {
-            items,
-            total,
-            visible: INITIAL_VISIBLE,
-            btn
-          };
-
-          btn.addEventListener('click', () => {
-            const state = sectionState[sectionId];
-            const nextVisible = Math.min(state.visible + LOAD_MORE_STEP, state.total);
-
-            for (let i = state.visible; i < nextVisible; i++) {
-              state.items[i].classList.remove('is-hidden');
-            }
-
-            state.visible = nextVisible;
-
-            if (state.visible >= state.total) {
-              state.btn.remove();
-            } else {
-              state.btn.textContent = `LOAD MORE (${state.visible} / ${state.total})`;
-            }
-          });
-
-          sectionEl.appendChild(btn);
-        });
-
-        const images = Array.from(document.querySelectorAll('.grid-item img'));
-        if (!images.length) return;
-
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImage = lightbox.querySelector('.lightbox-image');
-        const btnClose = lightbox.querySelector('.lightbox-close');
-        const btnPrev = lightbox.querySelector('.lightbox-prev');
-        const btnNext = lightbox.querySelector('.lightbox-next');
-        let currentIndex = 0;
-
-        function setImage() {
-          const img = images[currentIndex];
-          if (!img) return;
-          lightboxImage.src = img.src;
-          lightboxImage.alt = img.alt || '';
-        }
-
-        function openLightbox(index) {
-          currentIndex = index;
-          setImage();
-          lightbox.classList.add('is-open');
-        }
-
-        function closeLightbox() {
-          lightbox.classList.remove('is-open');
-        }
-
-        function showPrev() {
-          currentIndex = (currentIndex - 1 + images.length) % images.length;
-          setImage();
-        }
-
-        function showNext() {
-          currentIndex = (currentIndex + 1) % images.length;
-          setImage();
-        }
-
-        images.forEach((img, index) => {
-          img.style.cursor = 'zoom-in';
-          img.addEventListener('click', (e) => {
-            e.preventDefault();
-            openLightbox(index);
-          });
-        });
-
-        btnClose.addEventListener('click', (e) => {
-          e.stopPropagation();
-          closeLightbox();
-        });
-
-        btnPrev.addEventListener('click', (e) => {
-          e.stopPropagation();
-          showPrev();
-        });
-
-        btnNext.addEventListener('click', (e) => {
-          e.stopPropagation();
-          showNext();
-        });
-
-        lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox) closeLightbox();
-        });
-
-        document.addEventListener('keydown', (e) => {
-          if (!lightbox.classList.contains('is-open')) return;
-          if (e.key === 'Escape') closeLightbox();
-          if (e.key === 'ArrowLeft') showPrev();
-          if (e.key === 'ArrowRight') showNext();
-        });
-      });
     });
   </script>
+
 </body>
 </html>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const slides = document.querySelectorAll('.home-hero-slide');
-  let current = 0;
-
-  function nextSlide() {
-    slides[current].classList.remove('is-active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('is-active');
-  }
-
-  setInterval(nextSlide, 4200); /* 4.2초마다 변경 */
-});
-</script>
