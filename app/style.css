@@ -238,9 +238,19 @@ section {
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);  /* 🔥 2열 */
-  gap: 22px;
+  gap: 18px;
+
+  /* 기본: 태블릿/노트북 정도에서 2열 */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+
+/* 넓은 화면(데스크탑)에서는 3열 */
+@media (min-width: 1040px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 
 
 .grid-item {
@@ -714,6 +724,14 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+/* 🔥 여기 삽입 */
+.home-hero-slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  pointer-events: none;
 }
 
 /* 중앙 텍스트 */
