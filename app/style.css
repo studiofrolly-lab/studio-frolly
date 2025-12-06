@@ -716,10 +716,24 @@ body.index-page main {
 /* ============================= */
 
 /* 프로젝트 / 협업 리스트 */
+/* ABOUT – 리스트 텍스트 스타일 */
 .about-section-list {
-  font-size: 11.5px;
-  line-height: 1.75;
+  list-style: disc;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  font-size: 11.5px;   /* 🔹 본문을 한 단계 줄여서 타이틀이랑 확실히 구분 */
+  line-height: 1.8;
+  color: #555;         /* 너무 진하지도, 너무 흐리지도 않게 */
 }
+
+/* 리스트 안 굳이 볼드 안 쓰기 */
+.about-section-list li strong {
+  font-weight: 400;
+}
+
 
 /* Experience 항목 본문 */
 .about-experience-block {
