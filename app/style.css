@@ -101,7 +101,7 @@ section {
 
 .grid-item {
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 0;
   background: #e6dfd8;
 }
 
@@ -206,4 +206,3 @@ footer {
     row-gap: 6px;
   }
 }
-
