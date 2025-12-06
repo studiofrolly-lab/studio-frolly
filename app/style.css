@@ -711,3 +711,24 @@ lightbox-next {
 body.index-page main {
   padding-top: 0 !important;
 }
+/* ============================= */
+/*   ABOUT – 본문 텍스트 축소(11.5px) */
+/* ============================= */
+
+/* 프로젝트 / 협업 리스트 */
+.about-section-list {
+  font-size: 11.5px;
+  line-height: 1.75;
+}
+
+/* Experience 항목 본문 */
+.about-experience-block {
+  font-size: 11.5px;
+  line-height: 1.75;
+}
+
+/* Experience 제목은 기존 크기 유지 */
+.about-experience-title {
+  font-size: 13px;
+  font-weight: 600;
+}
