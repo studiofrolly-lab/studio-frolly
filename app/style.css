@@ -413,37 +413,34 @@ section {
 /*            FOOTER             */
 /* ============================= */
 
-/* 기존 footer 태그 스타일은 남겨두되, 새 푸터는 .site-footer 사용 */
+/* FOOTER */
 footer {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 20px 32px;
+  padding: 24px 20px 40px;
   font-size: 11px;
-  color: var(--muted);
   display: flex;
-  justify-content: space-between;
-}
-
-/* 브랜드 스타일 푸터 */
-.site-footer {
-  background: #111;
-  color: #ccc;
-  padding: 60px 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  margin-top: 80px;
+  gap: 4px;
+  color: #444; /* 전체 텍스트 좀 더 진하게 */
 }
 
-.site-footer .footer-inner > div {
-  margin-bottom: 8px;
-  font-size: 12px;
-  opacity: 0.85;
+/* 일반 정보 라인 (사업자 / 인스타 / 이메일) */
+.footer-line {
+  color: #444;
 }
 
-.site-footer .footer-inner > div:last-child {
-  margin-top: 12px;
-  opacity: 0.6;
-  letter-spacing: 0.12em;
+/* 카피라이트만 살짝 다른 색 + 트래킹 */
+.footer-copy {
+  color: #a59c90;           /* 규진 사이트 느낌의 연한 브라운-그레이 톤 */
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 4px;
 }
+
 
 /* ============================= */
 /*           LIGHTBOX            */
