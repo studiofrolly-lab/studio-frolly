@@ -1,0 +1,6 @@
+[build]
+  command = ""      # 빌드 명령 안 씀 (Next.js 빌드 X)
+  publish = "app"   # app 폴더 안의 정적 파일을 그대로 배포
+
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"   # Next.js 런타임 완전 스킵
