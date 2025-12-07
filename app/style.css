@@ -181,7 +181,7 @@ section {
   z-index: 2;
 }
 
-/* HOME – HERO TEXT (중앙, 그대로) */
+/* HOME – HERO TEXT */
 .home-hero-overlay {
   position: absolute;
   top: 50%;
@@ -209,7 +209,6 @@ section {
   color: rgba(255,255,255,0.97) !important;
   opacity: 1 !important;
 }
-
 .home-hero-sub-kr {
   font-size: 13px;
   margin-top: 6px;
@@ -272,13 +271,22 @@ section {
   font-size: 14px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 10px;      /* 제목 아래는 조금 띄우고 */
 }
 
 .section-desc {
   font-size: 13px;
+  color: #9a8f85;
   font-style: italic;
-  color: #8d8d8d;
+  font-family: "Georgia", "Times New Roman", serif;
+  margin-bottom: 2px;       /* 영문–한글은 더 붙이기 */
+}
+
+.section-desc-kr {
+  font-size: 13px;
+  color: #6d6460;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+  margin-top: 2px;
 }
 
 .section-divider {
@@ -339,7 +347,7 @@ section {
 .about-page main {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 20px 80px; /* 헤더 바로 아래부터 이미지 */
+  padding: 0 20px 80px;
 }
 
 /* HERO SLIDER */
@@ -380,7 +388,7 @@ section {
   object-fit: cover;
 }
 
-/* ABOUT HERO TEXT – 왼쪽 아래 고정 */
+/* ABOUT HERO TEXT – 왼쪽 아래 */
 .about-hero-overlay {
   position: absolute;
   left: 24px;
@@ -499,6 +507,7 @@ section {
   font-weight: 500;
   margin-bottom: 6px;
 }
+
 /* ============================= */
 /*        ABOUT TEXT AREA        */
 /* ============================= */
@@ -567,22 +576,23 @@ section {
 
 .site-footer {
   background: var(--bg);
-  padding: 60px 20px;
-  margin-top: 80px;
+  padding: 40px 20px;        /* 위/아래 패딩 줄임 */
+  margin-top: 40px;          /* 콘텐츠와의 간격 줄임 */
   text-align: center;
   color: #8e8e8e;
 }
 
 .site-footer .footer-inner > div {
-  margin-bottom: 8px;
+  margin-bottom: 4px;        /* 문단 간 간격 줄임 */
   font-size: 12px;
 }
 
 .site-footer .footer-copy {
-  margin-top: 11px;
+  margin-top: 8px;
   font-weight: 500;
   color: #E0707E;
   letter-spacing: 0.1em;
+  font-size: 10px;           /* 카피라이트 글자 크기 줄이기 */
 }
 
 /* ============================= */
@@ -613,16 +623,28 @@ section {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* 여기 오타 수정: lightbox-next → .lightbox-next */
 .lightbox-close,
 .lightbox-prev,
 .lightbox-next {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   background: none;
   border: none;
+  color: #f5f5f5;
+  font-size: 28px;
   cursor: pointer;
+}
+
+/* close 버튼은 위쪽 */
+.lightbox-close {
+  top: 20px;
+  right: 26px;
+}
+
+/* 좌우 버튼 공통 스타일 */
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
   padding: 18px;
   z-index: 101;
 }
@@ -647,7 +669,7 @@ section {
 
 .contact-section {
   max-width: 720px;
-  margin: 0 auto 80px;
+  margin: 20px auto 80px;     /* 위 여백 줄여서 카드 올리기 */
 }
 
 .contact-card {
@@ -716,6 +738,18 @@ section {
   color: var(--muted);
 }
 
+/* contact 링크 버튼 */
+.contact-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: #222;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ============================= */
 /*             MOBILE            */
 /* ============================= */
@@ -735,7 +769,6 @@ section {
     height: 60vh;
   }
 
-  /* 모바일에서도 왼쪽 아래, 폭만 조정 */
   .about-hero-overlay {
     left: 20px;
     right: 20px;
@@ -775,19 +808,17 @@ section {
 body.index-page main {
   padding-top: 0 !important;
 }
+
 /* ============================= */
 /*   ABOUT – 본문 텍스트 축소(11.5px) */
 /* ============================= */
 
-/* 프로젝트 / 협업 리스트 */
-/* ABOUT – 리스트 텍스트 */
 .about-section-list {
   list-style: disc;
   padding-left: 18px;
   display: flex;
   flex-direction: column;
   gap: 4px;
-
   font-size: 11.5px;
   line-height: 1.8;
   color: #555;
@@ -795,10 +826,9 @@ body.index-page main {
 
 /* 브랜드명 강조 */
 .about-section-list li strong {
-  font-weight: 600;   /* 너무 두껍지 않은 세미볼드 */
-  color: #333;        /* 미세하게 더 진하게 */
+  font-weight: 600;
+  color: #333;
 }
-
 
 /* Experience 항목 본문 */
 .about-experience-block {
@@ -810,19 +840,4 @@ body.index-page main {
 .about-experience-title {
   font-size: 13px;
   font-weight: 600;
-}
-/* INDEX – Korean + English Section descriptions */
-.section-desc {
-  font-size: 13px;
-  color: #9a8f85;        /* 어바웃 페이지 영어와 동일 색 */
-  font-style: italic;
-  font-family: "Georgia", "Times New Roman", serif;
-  margin-bottom: 6px;
-}
-
-.section-desc-kr {
-  font-size: 13px;
-  color: #6d6460;       /* 한국어는 조금 더 진하게 */
-  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
-  margin-top: 4px;
 }
