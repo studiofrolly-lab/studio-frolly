@@ -1,0 +1,15 @@
+/* Preserve the approved layouts while containing intermediate/small viewports. */
+@media (min-width: 821px) and (max-width: 1000px) {
+  .about-intro {
+    grid-template-columns: minmax(0, .82fr) minmax(0, 1.08fr);
+    gap: 4vw;
+  }
+  .about-copy { min-width: 0; }
+  .profile-grid { grid-template-columns: 100px minmax(0, 1fr); gap: 16px 16px; }
+}
+@media (max-width: 380px) {
+  .contact-page h1 { font-size: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home .hero-slide:not(.active) { opacity: 0 !important; }
+}
